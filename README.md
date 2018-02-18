@@ -1,2 +1,6 @@
 # Geckos-Team-26
-Voyage-4
+
+Meet the team:
+
+  * [Toni Gibbons](https://github.com/8thDay)
+  
