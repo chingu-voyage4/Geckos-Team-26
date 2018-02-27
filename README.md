@@ -7,4 +7,5 @@ A web app to help pet owners record their pet's progress, keep track of essentia
 ## Meet the team:
 
   * [Toni Gibbons](https://github.com/8thDay)
+  * [Craig Sweaton](https://github.com/Fixy250185/)
   * [Garrus](https://github.com/GarrusNapp)
