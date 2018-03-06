@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "description": "(A Chingu Voyage-4 remote development team)",
   "scripts": {
-    "client": "cd client && npm start",
-    "server": "nodemon server.js",
     "installserver": "npm install",
     "installclient": "cd client && npm install",
-    "updateall": "concurrently --kill-others-on-fail \"npm run installserver\" \"npm run installclient\"",
-    "dev": "concurrently --kill-others-on-fail \"npm run lint:server\" \"npm run lint:client\" \"npm run server\" \"npm run client\"",
+    "updateall":
+      "concurrently --kill-others-on-fail \"npm run installserver\" \"npm run installclient\"",
+    "eslint-check":
+      "eslint --print-config .eslintrc.json | eslint-config-prettier-check",
     "lint:client": "eslint --ext .jsx,.js client/src/",
     "lint:server": "eslint --ext .jsx,.js *.js",
-    "eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check"
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev":
+      "concurrently --kill-others-on-fail \"npm run lint:server\" \"npm run lint:client\" \"npm run server\" \"npm run client\"",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "repository": {
     "type": "git",
@@ -31,6 +38,8 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
     "nodemon": "^1.17.1",
     "prettier": "1.11.1"
   },
