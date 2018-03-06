@@ -8,8 +8,9 @@
     "installserver": "npm install",
     "installclient": "cd client && npm install",
     "updateall": "concurrently --kill-others-on-fail \"npm run installserver\" \"npm run installclient\"",
-    "dev": "concurrently --kill-others-on-fail \"npm run lint:client\" \"npm run server\" \"npm run client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run lint:server\" \"npm run lint:client\" \"npm run server\" \"npm run client\"",
     "lint:client": "eslint --ext .jsx,.js client/src/",
+    "lint:server": "eslint --ext .jsx,.js *.js",
     "eslint-check": "eslint --print-config .eslintrc.json | eslint-config-prettier-check"
   },
   "repository": {
