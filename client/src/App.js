@@ -1,7 +1,8 @@
+/* eslint react/prefer-stateless-function: 0 */
 import React, { Component } from 'react';
-import './App.css';
-
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+import './App.css';
 
 import Main from './components/main/main';
 import LogIn from './components/login/login';
