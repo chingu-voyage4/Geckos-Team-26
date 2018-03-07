@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-import React, { Component } from "react";
+import React from "react";
 import "./main.css";
 
 const Main = () => (

@@ -1,11 +1,10 @@
-// eslint-disable-next-line
-import React, { Component } from 'react';
-import './login.css';
+import React from "react";
+import "./login.css";
 
 const LogIn = () => (
   <div className="login">
     <h1>This is the log in page</h1>
- </div>
-)
+  </div>
+);
 
 export default LogIn;
