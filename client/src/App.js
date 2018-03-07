@@ -1,6 +1,6 @@
 /* eslint react/prefer-stateless-function: 0 */
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 
@@ -10,6 +10,7 @@ import LogIn from "./components/login/login";
 import SignUp from "./components/signup/signup";
 import Profile from "./components/profile/profile";
 import Footer from "./components/footer/footer";
+import NotFound from "./components/notfound/notfound";
 
 class App extends Component {
   render() {
@@ -17,10 +18,13 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Header />
-          <Route exact path="/" component={Main} />
-          <Route exact path="/login" component={LogIn} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/profile" component={Profile} />
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route path="/login" component={LogIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/profile" component={Profile} />
+            <Route component={NotFound} />
+          </Switch>
           <Footer />
         </div>
       </BrowserRouter>
