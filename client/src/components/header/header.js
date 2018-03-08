@@ -4,11 +4,11 @@ import { NavLink } from "react-router-dom";
 import "./header.css";
 
 const Header = () => (
-  <header className="header">
+  <header className="header ui inverted menu">
     <nav>
       <ul>
         <li>
-          <NavLink to="/" activeClassName="is-active" exact={true}>
+          <NavLink to="/" activeClassName="is-active" exact>
             My Pet
           </NavLink>
         </li>

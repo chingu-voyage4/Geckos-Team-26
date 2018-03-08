@@ -19,7 +19,7 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route path="/" component={Main} exact={true} />
+            <Route path="/" component={Main} exact />
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/profile" component={Profile} />
