@@ -1,17 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import "./header.css";
 
 const Header = () => (
   <header className="header ui inverted menu">
     <nav>
+      <h1>
+        <Link to="/" exact>
+          My Pet
+        </Link>
+      </h1>
       <ul>
-        <li>
-          <NavLink to="/" activeClassName="is-active" exact>
-            My Pet
-          </NavLink>
-        </li>
         <li>
           <NavLink to="/login" activeClassName="is-active">
             Log in
@@ -28,6 +28,7 @@ const Header = () => (
           </NavLink>
         </li>
       </ul>
+      <p className="tagline">the easy way to care for your pet</p>
     </nav>
   </header>
 );
