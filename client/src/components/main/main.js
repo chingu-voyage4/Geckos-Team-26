@@ -2,9 +2,9 @@ import React from "react";
 import "./main.css";
 
 const Main = () => (
-  <div className="main">
+  <section className="main">
     <h1>This is the main page</h1>
-  </div>
+  </section>
 );
 
 export default Main;

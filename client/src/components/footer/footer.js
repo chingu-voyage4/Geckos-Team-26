@@ -3,9 +3,9 @@ import React from "react";
 import "./footer.css";
 
 const Footer = () => (
-  <div className="footer">
+  <footer className="footer">
     <p>I am the footer!</p>
-  </div>
+  </footer>
 );
 
 export default Footer;

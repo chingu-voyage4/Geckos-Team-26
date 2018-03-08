@@ -2,9 +2,9 @@ import React from "react";
 import "./profile.css";
 
 const Profile = () => (
-  <div className="profile">
+  <section className="profile">
     <h1>The user profile will go here</h1>
-  </div>
+  </section>
 );
 
 export default Profile;
