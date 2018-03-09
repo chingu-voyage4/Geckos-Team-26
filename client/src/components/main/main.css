@@ -61,3 +61,52 @@
     align-items: start;
   }
 }
+
+/* ************************************ */
+/* MAIN PAGE GRID LAYOUT */
+/* ************************************ */
+
+@supports (display: grid) {
+  .custom-grid {
+    display: grid;
+    grid-gap: 1em;
+  }
+
+  @media screen and (min-width: 600px) {
+    .custom-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .custom-grid_item {
+      margin-top: 2em;
+      padding-bottom: 2em;
+      border-bottom: 0;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    .custom-grid {
+      grid-gap: 2em;
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      grid-template-areas:
+        "ft1 ft1 ft2 ft2"
+        "ft3 ft4 ft4 ft5";
+      align-items: start;
+    }
+    .feature-1 {
+      grid-area: ft1;
+    }
+    .feature-2 {
+      grid-area: ft2;
+    }
+    .feature-3 {
+      grid-area: ft3;
+    }
+    .feature-4 {
+      grid-area: ft4;
+    }
+    .feature-5 {
+      grid-area: ft5;
+    }
+  }
+}
