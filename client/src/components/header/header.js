@@ -6,8 +6,9 @@ import "./header.css";
 const Header = () => (
   <header className="ui inverted menu segment">
     <div className="ui container">
-      <div className="header item">
-        <Link to="/" exact>
+      <div className="header item yellow">
+        <Link to="/" exact className="custom-yellow-header">
+          <i class="paw icon custom-hide" />
           My Pet
         </Link>
       </div>

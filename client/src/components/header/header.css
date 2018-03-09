@@ -5,3 +5,20 @@
 .ui.menu {
   border-radius: 0;
 }
+
+.custom-yellow-header {
+  transition: all 0.3s;
+}
+
+.custom-yellow-header:hover {
+  color: #fbbd08 !important;
+}
+
+.custom-hide {
+  opacity: 0 !important;
+  transition: opacity 0.3s;
+}
+
+.custom-yellow-header:hover .custom-hide {
+  opacity: 1 !important;
+}
