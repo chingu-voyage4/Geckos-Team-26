@@ -9,7 +9,7 @@ const Header = () => (
       <div className="header item yellow">
         <Link to="/" exact className="custom-yellow-header">
           <i class="paw icon custom-hide" />
-          My Pet
+          MyPet
         </Link>
       </div>
       <nav className="right item">

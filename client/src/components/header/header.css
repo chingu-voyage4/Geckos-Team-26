@@ -4,9 +4,11 @@
 
 .ui.menu {
   border-radius: 0;
+  margin-bottom: 0;
 }
 
 .custom-yellow-header {
+  font-family: "Pacifico", cursive;
   transition: all 0.3s;
 }
 
