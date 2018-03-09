@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React, { Component } from "react";
-import { FormMenu } from "./formmenu";
+import FormMenu from "./formmenu";
 import "./userform.css";
 
 class UserForm extends Component {
