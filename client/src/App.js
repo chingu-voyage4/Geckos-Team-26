@@ -6,8 +6,7 @@ import "./App.css";
 
 import Header from "./components/header/header";
 import Main from "./components/main/main";
-import LogIn from "./components/login/login";
-import SignUp from "./components/signup/signup";
+import UserForm from "./components/userform/userform";
 import Profile from "./components/profile/profile";
 import Footer from "./components/footer/footer";
 import NotFound from "./components/notfound/notfound";
@@ -20,8 +19,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route path="/" component={Main} exact />
-            <Route path="/login" component={LogIn} />
-            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={UserForm} />
             <Route path="/profile" component={Profile} />
             <Route component={NotFound} />
           </Switch>
