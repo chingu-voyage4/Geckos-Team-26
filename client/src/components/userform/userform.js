@@ -48,7 +48,7 @@ class FormMenu extends Component {
   }
 }
 
-class SignUp extends Component {
+class UserForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -136,4 +136,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default UserForm;
