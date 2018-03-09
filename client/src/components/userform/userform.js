@@ -1,52 +1,7 @@
 // eslint-disable-next-line
 import React, { Component } from "react";
+import { FormMenu } from "./formmenu";
 import "./userform.css";
-
-class FormMenu extends Component {
-  constructor() {
-    super();
-    this.state = {
-      activeItem: "signup"
-    };
-    this.toggleForm = this.toggleForm.bind(this);
-  }
-
-  toggleForm() {
-    let activeItem = this.state.activeItem;
-
-    if (activeItem === "signup") {
-      activeItem = "login";
-    } else {
-      activeItem = "signup";
-    }
-
-    this.setState({
-      activeItem: activeItem
-    });
-    this.props.toggler();
-  }
-
-  render() {
-    return (
-      <div className="ui tabular menu">
-        <a
-          onClick={this.toggleForm}
-          className={
-            this.state.activeItem === "signup" ? "item active" : "item"
-          }
-        >
-          Signup
-        </a>
-        <a
-          onClick={this.toggleForm}
-          className={this.state.activeItem === "login" ? "item active" : "item"}
-        >
-          Login
-        </a>
-      </div>
-    );
-  }
-}
 
 class UserForm extends Component {
   constructor() {
@@ -63,7 +18,7 @@ class UserForm extends Component {
   }
 
   toggleForm() {
-    let activeItem = this.state.activeItem;
+    let { activeItem } = this.state;
     if (activeItem === "signup") {
       activeItem = "login";
     } else {
@@ -71,19 +26,20 @@ class UserForm extends Component {
     }
 
     this.setState({
-      activeItem: activeItem
+      activeItem
     });
   }
 
   handleWriting(e) {
-    const name = e.target.name;
+    const { name } = e.target;
     this.setState({
       [name]: e.target.value
     });
   }
 
   submit(e) {
-    //todo: logic for making POST requests
+    //  todo: logic for making POST requests
+
     console.log(this.state);
     e.preventDefault();
   }
