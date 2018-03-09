@@ -1,0 +1,63 @@
+/* ************************************ */
+/* MAIN PAGE GLOBAL STYLES */
+/* ************************************ */
+
+.masthead {
+  min-height: 600px;
+  border-radius: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-background-image {
+  background-color: #edb506;
+  background-image: url(./my-pet-app.jpg) !important;
+  background-size: cover !important;
+  background-position: center right !important;
+  background-repeat: no-repeat !important;
+}
+
+.custom-logo-font {
+  font-family: "Pacifico", cursive !important;
+  font-size: 4rem !important;
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15) !important;
+  margin-top: 0.5em !important;
+}
+
+.custom-display-button {
+  margin-top: 1em !important;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.tagline {
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.custom-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  margin: 2em auto;
+}
+
+.custom-grid_item {
+  margin-top: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-grid_item:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .masthead {
+    padding-left: 25vw !important;
+    align-items: start;
+  }
+}

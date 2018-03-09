@@ -38,6 +38,15 @@ const Main = () => (
         ipsum dolor sit amet.
       </p>
     </article>
+    <div className="ui inverted masthead segment center aligned custom-background-image">
+      <div className="custom-display-header">
+        <h1 className="ui inverted header custom-logo-font">MyPet</h1>
+        <h2 className="tagline">The easy way to care for your pet.</h2>
+        <button className="ui huge black button custom-display-button">
+          Get Started
+        </button>
+      </div>
+    </div>
   </main>
 );
 
