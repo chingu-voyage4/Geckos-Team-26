@@ -1,14 +1,12 @@
 const router = require("express").Router();
 const checkNewUserInput = require("../utils/validateUserInput");
 const hashPassword = require("../utils/hashing");
-const { dbUrl, jwtSecret } = require("../utils/config");
+const { dbUrl } = require("../utils/config");
 
 const mongoose = require("mongoose");
 const UserModel = require("../models/User");
 
-const jwt = require("jsonwebtoken");
-
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
   mongoose.connect(dbUrl);
 
   const newUser = {
@@ -27,19 +25,15 @@ router.post("/", (req, res) => {
 
         validNewUser
           .save()
-          .then(response => {
+          .then(() => {
             mongoose.disconnect();
-
-            const token = jwt.sign(
-              { token: response.email + Date.now() },
-              jwtSecret
-            );
-
-            return res.json({ token });
+            return res.json({ message: "OK" });
           })
           .catch(() => {
             mongoose.disconnect();
-            res.status(500).json({ message: "Could not create new user" });
+            return res
+              .status(500)
+              .json({ message: "Could not create new user" });
           });
       });
     })

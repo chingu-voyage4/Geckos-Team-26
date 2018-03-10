@@ -6,13 +6,11 @@ const server = express();
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
-const signupRoute = require("./routes/signupRoute");
-const loginRoute = require("./routes/loginRoute");
+const authRoute = require("./routes/authRoute");
 const logoutRoute = require("./routes/logoutRoute");
 const clientRoute = require("./routes/clientRoute");
 
-server.use("/auth/signup", signupRoute);
-server.use("/auth/login", loginRoute);
+server.use("/auth", authRoute);
 server.use("/logout", logoutRoute);
 server.use("*", clientRoute);
 
