@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const checkNewUserInput = require("../utils/validateUserInput");
-const hashPassword = require("../utils/hashing");
-const { dbUrl } = require("../utils/config");
+const { hashPassword, compareHashes } = require("../utils/hashing");
+const { dbUrl, jwtSecret } = require("../utils/config");
 
 const mongoose = require("mongoose");
 const UserModel = require("../models/User");
+
+const jwt = require("jsonwebtoken");
 
 router.post("/signup", (req, res) => {
   mongoose.connect(dbUrl);
@@ -41,6 +43,32 @@ router.post("/signup", (req, res) => {
       mongoose.disconnect();
       return res.status(400).json({ message: "Invalid input" });
     });
+});
+
+router.post("/login", (req, res) => {
+  mongoose.connect(dbUrl);
+
+  const userInput = {
+    email: req.body.email,
+    password: req.body.password
+  };
+
+  UserModel.findOne({ email: userInput.email }, (err, user) => {
+    if (err) {
+      return res.json({ message: "No user found" });
+    }
+
+    compareHashes(userInput.password, user.password).then(result => {
+      if (result) {
+        const token = jwt.sign(userInput.email, jwtSecret);
+        return res.json({ token });
+      }
+
+      return res.json({ message: "Incorrect password" });
+    });
+
+    return null;
+  });
 });
 
 module.exports = router;

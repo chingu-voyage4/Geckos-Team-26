@@ -12,7 +12,11 @@ const checkNewUserInput = user =>
     if (user.password.length >= 8) {
       isPasswordValidLength = true;
     }
-    if (user.password === user.passwordVerify) {
+    if (user.passwordVerify !== undefined) {
+      if (user.password === user.passwordVerify) {
+        isPasswordVerified = true;
+      }
+    } else {
       isPasswordVerified = true;
     }
 
