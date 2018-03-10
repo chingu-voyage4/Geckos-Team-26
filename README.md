@@ -20,6 +20,21 @@ Run the following commands to install dependencies for both the client and serve
 * `npm run installserver`
 * `npm run installclient`
 
+In order to connect to the database you must first create a new file in the utils directory named config.js.
+You must then copy the following code into the file
+
+```javascript
+const dbUrl = process.env.DBURL || "PUT THE DB URL IN HERE";
+const jwtSecret = process.env.JWTSECRET || "PUT THE JWT SECRET IN HERE";
+
+module.exports = {
+  dbUrl,
+  jwtSecret
+};
+```
+
+The db URL and JWT secret will be shared privately between the team members.
+
 Run this command to start the dev environment:
 
 * `npm run dev`
