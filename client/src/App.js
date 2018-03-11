@@ -19,7 +19,14 @@ class App extends Component {
           <Header />
           <Switch>
             <Route path="/" component={Main} exact />
-            <Route path="/login" component={UserForm} />
+            <Route
+              path="/login"
+              render={props => <UserForm activeItem="login" {...props} />}
+            />
+            <Route
+              path="/signup"
+              render={props => <UserForm activeItem="signup" {...props} />}
+            />
             <Route path="/profile" component={Profile} />
             <Route component={NotFound} />
           </Switch>

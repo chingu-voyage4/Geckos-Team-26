@@ -16,6 +16,11 @@ const Header = () => (
           </NavLink>
         </li>
         <li>
+          <NavLink to="/signup" activeClassName="is-active">
+            Sign up
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/logout" activeClassName="is-active">
             Log out
           </NavLink>
