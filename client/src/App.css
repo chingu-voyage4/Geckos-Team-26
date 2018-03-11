@@ -1,0 +1,14 @@
+/* ************************************ */
+/* LAYOUT */
+/* ************************************ */
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+@supports (display: grid) {
+  .app {
+    display: grid;
+  }
+}
