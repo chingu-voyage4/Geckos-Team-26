@@ -4,17 +4,23 @@ import FormMenu from "./formmenu";
 import "./userform.css";
 
 class UserForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       email: "",
       password: "",
-      activeItem: "signup"
+      activeItem: props.activeItem
     };
     this.handleWriting = this.handleWriting.bind(this);
     this.submit = this.submit.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      activeItem: nextProps.activeItem
+    });
   }
 
   toggleForm() {
@@ -24,7 +30,6 @@ class UserForm extends Component {
     } else {
       activeItem = "signup";
     }
-
     this.setState({
       activeItem
     });
@@ -47,29 +52,32 @@ class UserForm extends Component {
   render() {
     return (
       <div className="ui container raised segment">
-        <FormMenu toggler={this.toggleForm} />
+        <FormMenu
+          toggler={this.toggleForm}
+          activeItem={this.state.activeItem}
+        />
         <div className="ui container">
           <form className="ui form">
-            <div className="field">
-              <input
-                name="username"
-                type="text"
-                value={this.state.username}
-                onChange={this.handleWriting}
-                placeholder="Username"
-              />
-            </div>
             {this.state.activeItem === "signup" ? (
               <div className="field">
                 <input
-                  name="email"
-                  type="email"
-                  value={this.state.email}
+                  name="username"
+                  type="text"
+                  value={this.state.username}
                   onChange={this.handleWriting}
-                  placeholder="Email"
+                  placeholder="Username"
                 />
               </div>
             ) : null}
+            <div className="field">
+              <input
+                name="email"
+                type="email"
+                value={this.state.email}
+                onChange={this.handleWriting}
+                placeholder="Email"
+              />
+            </div>
             <div className="field">
               <input
                 name="password"
