@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./main.css";
 
 const Main = () => (
@@ -7,9 +8,11 @@ const Main = () => (
       <div className="custom-display-header">
         <h1 className="ui inverted header custom-logo-font">MyPet</h1>
         <h2 className="tagline">The easy way to care for your pet.</h2>
-        <button className="ui huge black button custom-display-button">
-          Get Started
-        </button>
+        <Link to="/signup">
+          <button className="ui huge black button custom-display-button">
+            Get Started
+          </button>
+        </Link>
       </div>
     </div>
     <div className="custom-grid">
