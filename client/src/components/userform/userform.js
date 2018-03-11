@@ -51,48 +51,60 @@ class UserForm extends Component {
 
   render() {
     return (
-      <div className="ui container raised segment">
-        <FormMenu
-          toggler={this.toggleForm}
-          activeItem={this.state.activeItem}
-        />
-        <div className="ui container">
-          <form className="ui form">
-            {this.state.activeItem === "signup" ? (
+      <div className="ui middle aligned center aligned grid custom-display-form">
+        <div className="column">
+          <h2 className="ui black header">Log In</h2>
+          <FormMenu
+            toggler={this.toggleForm}
+            activeItem={this.state.activeItem}
+          />
+          <form className="ui large form">
+            <div className="ui stacked segment">
+              {this.state.activeItem === "signup" ? (
+                <div className="field">
+                  <div className="ui left icon input">
+                    <i className="user icon" />
+                    <input
+                      name="username"
+                      type="text"
+                      value={this.state.username}
+                      onChange={this.handleWriting}
+                      placeholder="Username"
+                    />
+                  </div>
+                </div>
+              ) : null}
               <div className="field">
-                <input
-                  name="username"
-                  type="text"
-                  value={this.state.username}
-                  onChange={this.handleWriting}
-                  placeholder="Username"
-                />
+                <div className="ui left icon input">
+                  <i className="at icon" />
+                  <input
+                    name="email"
+                    type="email"
+                    value={this.state.email}
+                    onChange={this.handleWriting}
+                    placeholder="Email"
+                  />
+                </div>
               </div>
-            ) : null}
-            <div className="field">
+              <div className="field">
+                <div className="ui left icon input">
+                  <i className="lock icon" />
+                  <input
+                    name="password"
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.handleWriting}
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
               <input
-                name="email"
-                type="email"
-                value={this.state.email}
-                onChange={this.handleWriting}
-                placeholder="Email"
+                className="ui fluid large yellow submit button"
+                type="submit"
+                onClick={this.submit}
+                value="Submit"
               />
             </div>
-            <div className="field">
-              <input
-                name="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.handleWriting}
-                placeholder="Password"
-              />
-            </div>
-            <input
-              className="ui button"
-              type="submit"
-              onClick={this.submit}
-              value="Submit"
-            />
           </form>
         </div>
       </div>

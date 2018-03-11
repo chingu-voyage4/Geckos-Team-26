@@ -1,7 +1,7 @@
 import React from "react";
 
 const FormMenu = props => (
-  <div className="ui tabular menu">
+  <div className="ui pointing menu">
     <a
       onClick={props.toggler}
       className={props.activeItem === "signup" ? "item active" : "item"}

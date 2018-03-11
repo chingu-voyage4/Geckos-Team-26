@@ -8,7 +8,7 @@ const Header = () => (
     <div className="ui container">
       <div className="header item yellow">
         <Link to="/" exact className="custom-yellow-header">
-          <i class="paw icon custom-hide" />
+          <i className="paw icon custom-hide" />
           MyPet
         </Link>
       </div>
