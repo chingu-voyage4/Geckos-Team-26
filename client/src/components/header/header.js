@@ -7,9 +7,7 @@ const Header = () => (
   <header className="header ui inverted menu">
     <nav>
       <h1>
-        <Link to="/" exact>
-          My Pet
-        </Link>
+        <Link to="/">My Pet</Link>
       </h1>
       <ul>
         <li>
