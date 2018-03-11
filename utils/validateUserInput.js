@@ -25,7 +25,7 @@ const checkNewUserInput = user =>
       isPasswordValidLength === false ||
       isPasswordVerified === false
     ) {
-      return reject();
+      return reject(new Error("Invalid input"));
     }
 
     return resolve();
