@@ -4,30 +4,40 @@ import { Link, NavLink } from "react-router-dom";
 import "./header.css";
 
 const Header = () => (
-  <header className="header ui inverted menu">
-    <nav>
-      <h1>
-        <Link to="/">My Pet</Link>
-      </h1>
-      <ul>
-        <li>
-          <NavLink to="/login" activeClassName="is-active">
+  <header className="ui inverted menu segment">
+    <div className="ui container">
+      <div className="header item yellow">
+        <Link to="/" exact className="custom-yellow-header">
+          <i className="paw icon custom-hide" />
+          MyPet
+        </Link>
+      </div>
+      <nav className="right item">
+        <div className="ui secondary inverted pointing menu">
+          <NavLink
+            to="/login"
+            activeClassName="is-active active"
+            className="item"
+          >
             Log in
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup" activeClassName="is-active">
+          <NavLink
+            to="/signup"
+            activeClassName="is-active active"
+            className="item"
+          >
             Sign up
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/logout" activeClassName="is-active">
+          <NavLink
+            to="/logout"
+            activeClassName="is-active active"
+            className="item"
+          >
             Log out
           </NavLink>
-        </li>
-      </ul>
-      <p className="tagline">the easy way to care for your pet</p>
-    </nav>
+        </div>
+      </nav>
+    </div>
   </header>
 );
 

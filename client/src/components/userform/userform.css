@@ -1,0 +1,10 @@
+/* ************************************ */
+/* USER FORM STYLES */
+/* ************************************ */
+
+@media screen and (min-width: 600px) {
+  .custom-display-form {
+    margin: 3em auto !important;
+    width: 600px;
+  }
+}
