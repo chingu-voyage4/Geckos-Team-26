@@ -16,12 +16,13 @@ class UserForm extends Component {
     this.submit = this.submit.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
   }
+
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     this.setState({
       activeItem: nextProps.activeItem
     });
   }
+
   toggleForm() {
     let { activeItem } = this.state;
     if (activeItem === "signup") {
