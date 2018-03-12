@@ -7,28 +7,15 @@ const verifyPassword = (password, passwordVerify) =>
 
 const checkNewUserInput = user =>
   new Promise((resolve, reject) => {
-    let isValidEmail = false;
-    let isPasswordValidLength = false;
-    let isPasswordVerified = false;
-
-    isValidEmail = validateEmail(user.email);
-    isPasswordValidLength = validatePasswordLength(user.password);
-
-    if (user.passwordVerify !== undefined) {
-      isPasswordVerified = verifyPassword(user.password, user.passwordVerify);
-    } else {
-      isPasswordVerified = true;
-    }
-
     if (
-      isValidEmail === false ||
-      isPasswordValidLength === false ||
-      isPasswordVerified === false
+      validateEmail(user.email) &&
+      validatePasswordLength(user.password) &&
+      verifyPassword(user.password, user.passwordVerify)
     ) {
-      return reject(new Error("Invalid input"));
+      return resolve();
     }
 
-    return resolve();
+    return reject(new Error("Invalid input"));
   });
 
 module.exports = {
