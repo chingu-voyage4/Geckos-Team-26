@@ -7,6 +7,7 @@ const { jwtSecret } = require("../utils/config");
 
 router.post("/signup", (req, res) => {
   const newUser = {
+    username: req.body.username,
     email: req.body.email,
     password: req.body.password,
     passwordVerify: req.body.passwordVerify
@@ -16,6 +17,7 @@ router.post("/signup", (req, res) => {
     .then(() => {
       hashPassword(newUser.password).then(hashedPassword => {
         const validNewUser = {
+          username: newUser.username,
           email: newUser.email,
           password: hashedPassword
         };
