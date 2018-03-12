@@ -6,6 +6,7 @@ const SaveUserToDB = user => {
   mongoose.connect(dbUrl);
 
   const newUser = new UserModel({
+    username: user.username,
     email: user.email,
     password: user.password
   });
