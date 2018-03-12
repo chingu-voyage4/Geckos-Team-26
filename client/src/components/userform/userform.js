@@ -10,6 +10,7 @@ class UserForm extends Component {
       username: "",
       email: "",
       password: "",
+      passwordVerify: "",
       activeItem: props.activeItem
     };
     this.handleWriting = this.handleWriting.bind(this);
@@ -43,10 +44,23 @@ class UserForm extends Component {
   }
 
   submit(e) {
-    //  todo: logic for making POST requests
-
-    console.log(this.state);
     e.preventDefault();
+
+    if (this.state.activeItem === "signup") {
+      const data = this.state;
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(data)
+      };
+
+      fetch("/auth/signup", options).then(res => console.log(res));
+    } else {
+      // TODO - login
+    }
   }
 
   render() {
@@ -60,7 +74,7 @@ class UserForm extends Component {
             toggler={this.toggleForm}
             activeItem={this.state.activeItem}
           />
-          <form className="ui large form">
+          <form className="ui large form" id="userForm">
             <div className="ui stacked segment">
               {this.state.activeItem === "signup" ? (
                 <div className="field">
@@ -100,6 +114,20 @@ class UserForm extends Component {
                   />
                 </div>
               </div>
+              {this.state.activeItem === "signup" ? (
+                <div className="field">
+                  <div className="ui left icon input">
+                    <i className="lock icon" />
+                    <input
+                      name="passwordVerify"
+                      type="password"
+                      value={this.state.passwordVerify}
+                      onChange={this.handleWriting}
+                      placeholder="Verify password"
+                    />
+                  </div>
+                </div>
+              ) : null}
               <input
                 className="ui fluid large yellow submit button"
                 type="submit"

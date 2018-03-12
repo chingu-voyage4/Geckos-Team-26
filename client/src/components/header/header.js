@@ -7,7 +7,7 @@ const Header = () => (
   <header className="ui inverted menu segment">
     <div className="ui container">
       <div className="header item yellow">
-        <Link to="/" exact className="custom-yellow-header">
+        <Link to="/" className="custom-yellow-header">
           <i className="paw icon custom-hide" />
           MyPet
         </Link>
