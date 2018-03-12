@@ -53,7 +53,9 @@ class UserForm extends Component {
     return (
       <div className="ui middle aligned center aligned grid custom-display-form">
         <div className="column">
-          <h2 className="ui black header">Log In</h2>
+          <h2 className="ui black header">
+            {this.state.activeItem === "signup" ? "Sign up" : "Log in"}
+          </h2>
           <FormMenu
             toggler={this.toggleForm}
             activeItem={this.state.activeItem}
