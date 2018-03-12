@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const checkNewUserInput = require("../utils/validateUserInput");
+const { checkNewUserInput } = require("../utils/validateUserInput");
 const { hashPassword, compareHashes } = require("../utils/hashing");
 const { SaveUserToDB, GetUserFromDB } = require("../utils/mongo");
 const { jwtSecret } = require("../utils/config");

@@ -1,21 +1,21 @@
 const validator = require("validator");
 
+const validateEmail = email => validator.isEmail(email);
+const validatePasswordLength = passwordLength => passwordLength >= 8;
+const verifyPassword = (password, passwordVerify) =>
+  password === passwordVerify;
+
 const checkNewUserInput = user =>
   new Promise((resolve, reject) => {
     let isValidEmail = false;
     let isPasswordValidLength = false;
     let isPasswordVerified = false;
 
-    if (validator.isEmail(user.email)) {
-      isValidEmail = true;
-    }
-    if (user.password.length >= 8) {
-      isPasswordValidLength = true;
-    }
+    isValidEmail = validateEmail(user.email);
+    isPasswordValidLength = validatePasswordLength(user.password.length);
+
     if (user.passwordVerify !== undefined) {
-      if (user.password === user.passwordVerify) {
-        isPasswordVerified = true;
-      }
+      isPasswordVerified = verifyPassword(user.password, user.passwordVerify);
     } else {
       isPasswordVerified = true;
     }
@@ -31,4 +31,9 @@ const checkNewUserInput = user =>
     return resolve();
   });
 
-module.exports = checkNewUserInput;
+module.exports = {
+  validateEmail,
+  validatePasswordLength,
+  verifyPassword,
+  checkNewUserInput
+};
