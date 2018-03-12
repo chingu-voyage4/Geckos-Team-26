@@ -10,6 +10,7 @@ class UserForm extends Component {
       username: "",
       email: "",
       password: "",
+      passwordVerify: "",
       activeItem: props.activeItem
     };
     this.handleWriting = this.handleWriting.bind(this);
@@ -47,6 +48,20 @@ class UserForm extends Component {
 
     console.log(this.state);
     e.preventDefault();
+
+    const data = this.state;
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    const options = {
+      method: "POST",
+      headers,
+      body: JSON.stringify(data)
+    };
+
+    fetch("http://localhost:3000/auth/signup", options).then(res =>
+      console.log(res)
+    );
   }
 
   render() {
@@ -100,6 +115,20 @@ class UserForm extends Component {
                   />
                 </div>
               </div>
+              {this.state.activeItem === "signup" ? (
+                <div className="field">
+                  <div className="ui left icon input">
+                    <i className="lock icon" />
+                    <input
+                      name="passwordVerify"
+                      type="password"
+                      value={this.state.passwordVerify}
+                      onChange={this.handleWriting}
+                      placeholder="Verify password"
+                    />
+                  </div>
+                </div>
+              ) : null}
               <input
                 className="ui fluid large yellow submit button"
                 type="submit"
