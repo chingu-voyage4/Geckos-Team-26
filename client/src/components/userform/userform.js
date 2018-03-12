@@ -46,19 +46,21 @@ class UserForm extends Component {
   submit(e) {
     e.preventDefault();
 
-    const data = this.state;
-    const headers = new Headers();
-    headers.append("Content-Type", "application/json");
+    if (this.state.activeItem === "signup") {
+      const data = this.state;
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
 
-    const options = {
-      method: "POST",
-      headers,
-      body: JSON.stringify(data)
-    };
+      const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(data)
+      };
 
-    fetch("http://localhost:3000/auth/signup", options).then(res =>
-      console.log(res)
-    );
+      fetch("/auth/signup", options).then(res => console.log(res));
+    } else {
+      // TODO - login
+    }
   }
 
   render() {
@@ -72,7 +74,7 @@ class UserForm extends Component {
             toggler={this.toggleForm}
             activeItem={this.state.activeItem}
           />
-          <form className="ui large form">
+          <form className="ui large form" id="userForm">
             <div className="ui stacked segment">
               {this.state.activeItem === "signup" ? (
                 <div className="field">
