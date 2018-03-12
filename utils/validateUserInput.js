@@ -1,7 +1,7 @@
 const validator = require("validator");
 
 const validateEmail = email => validator.isEmail(email);
-const validatePasswordLength = passwordLength => passwordLength >= 8;
+const validatePasswordLength = password => password.length >= 8;
 const verifyPassword = (password, passwordVerify) =>
   password === passwordVerify;
 
@@ -12,7 +12,7 @@ const checkNewUserInput = user =>
     let isPasswordVerified = false;
 
     isValidEmail = validateEmail(user.email);
-    isPasswordValidLength = validatePasswordLength(user.password.length);
+    isPasswordValidLength = validatePasswordLength(user.password);
 
     if (user.passwordVerify !== undefined) {
       isPasswordVerified = verifyPassword(user.password, user.passwordVerify);
