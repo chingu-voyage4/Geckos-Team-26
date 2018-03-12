@@ -44,9 +44,6 @@ class UserForm extends Component {
   }
 
   submit(e) {
-    //  todo: logic for making POST requests
-
-    console.log(this.state);
     e.preventDefault();
 
     const data = this.state;

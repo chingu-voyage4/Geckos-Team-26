@@ -9,7 +9,7 @@ const verifyPassword = (password, passwordVerify) =>
 const checkNewUserInput = user =>
   new Promise((resolve, reject) => {
     if (
-      validateUsernameLength(username) &&
+      validateUsernameLength(user.username) &&
       validateEmail(user.email) &&
       validatePasswordLength(user.password) &&
       verifyPassword(user.password, user.passwordVerify)
