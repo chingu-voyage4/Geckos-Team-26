@@ -6,6 +6,7 @@ import "./App.css";
 
 import Header from "./components/header/header";
 import Main from "./components/main/main";
+import Dashboard from "./components/dashboard/dashboard";
 import UserForm from "./components/userform/userform";
 import Profile from "./components/profile/profile";
 import Footer from "./components/footer/footer";
@@ -19,6 +20,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route path="/" component={Main} exact />
+            <Route path="/dashboard" component={Dashboard} />
             <Route
               path="/login"
               render={props => <UserForm activeItem="login" {...props} />}
