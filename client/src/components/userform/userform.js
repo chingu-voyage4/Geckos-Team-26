@@ -45,9 +45,8 @@ class UserForm extends Component {
 
   submit(e) {
     e.preventDefault();
-
-    if (this.state.activeItem === "signup") {
-      const data = this.state;
+    const { activeItem, ...data } = this.state;
+    if (activeItem === "signup") {
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
 
@@ -56,7 +55,6 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(data)
       };
-
       fetch("/auth/signup", options).then(res => console.log(res));
     } else {
       // TODO - login
