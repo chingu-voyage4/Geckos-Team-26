@@ -7,10 +7,12 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
 const authRoute = require("./routes/authRoute");
+const oauthRoute = require("./routes/oauthRoute");
 const logoutRoute = require("./routes/logoutRoute");
 const clientRoute = require("./routes/clientRoute");
 
 server.use("/auth", authRoute);
+server.use("/oauth", oauthRoute);
 server.use("/logout", logoutRoute);
 server.use("*", clientRoute);
 
