@@ -4,7 +4,7 @@ import "./dashboard.css";
 
 const username = "Toni";
 const pets = ["Morgan", "Cookie"];
-const petList = pets.map(pets => <li>{pets}</li>);
+const petList = pets.map(el => <li>{el}</li>);
 
 const Dashboard = () => (
   <section className="dashboard">
