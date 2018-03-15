@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React, { Component } from "react";
 import FormMenu from "./formmenu";
+import GoogleLogin from "../google-oauth-button/googleoAuthButton";
 import "./userform.css";
 
 class UserForm extends Component {
@@ -135,6 +136,7 @@ class UserForm extends Component {
                 value="Submit"
               />
             </div>
+            <GoogleLogin />
           </form>
         </div>
       </div>
