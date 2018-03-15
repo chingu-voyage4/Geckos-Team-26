@@ -1,6 +1,7 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
 
+import clientId from "../../googleCredentials";
 import "./googleoAuthButton.css";
 
 const responseGoogle = response => {
@@ -9,8 +10,7 @@ const responseGoogle = response => {
 
 const GoogleoAuthButton = () => (
   <GoogleLogin
-    clientId="732452823410-5c41q9209ul7k6b5kklrn4gfbcittvcd.apps.googleusercontent.com"
-    // buttonText="Sign in with Google"
+    clientId={clientId}
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     className="googleButton"
