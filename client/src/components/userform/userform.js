@@ -7,10 +7,12 @@ class UserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      email: "",
-      password: "",
-      passwordVerify: "",
+      user: {
+        username: "",
+        email: "",
+        password: "",
+        passwordVerify: ""
+      },
       activeItem: props.activeItem
     };
     this.handleWriting = this.handleWriting.bind(this);
@@ -39,7 +41,10 @@ class UserForm extends Component {
   handleWriting(e) {
     const { name } = e.target;
     this.setState({
-      [name]: e.target.value
+      user: {
+        ...this.state.user,
+        [name]: e.target.value
+      }
     });
   }
 
@@ -47,7 +52,7 @@ class UserForm extends Component {
     e.preventDefault();
 
     if (this.state.activeItem === "signup") {
-      const data = this.state;
+      const data = this.state.user;
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
 
@@ -83,7 +88,7 @@ class UserForm extends Component {
                     <input
                       name="username"
                       type="text"
-                      value={this.state.username}
+                      value={this.state.user.username}
                       onChange={this.handleWriting}
                       placeholder="Username"
                     />
@@ -96,7 +101,7 @@ class UserForm extends Component {
                   <input
                     name="email"
                     type="email"
-                    value={this.state.email}
+                    value={this.state.user.email}
                     onChange={this.handleWriting}
                     placeholder="Email"
                   />
@@ -108,7 +113,7 @@ class UserForm extends Component {
                   <input
                     name="password"
                     type="password"
-                    value={this.state.password}
+                    value={this.state.user.password}
                     onChange={this.handleWriting}
                     placeholder="Password"
                   />
@@ -121,7 +126,7 @@ class UserForm extends Component {
                     <input
                       name="passwordVerify"
                       type="password"
-                      value={this.state.passwordVerify}
+                      value={this.state.user.passwordVerify}
                       onChange={this.handleWriting}
                       placeholder="Verify password"
                     />
