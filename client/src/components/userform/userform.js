@@ -72,7 +72,7 @@ class UserForm extends Component {
             toggler={this.toggleForm}
             activeItem={this.state.activeItem}
           />
-          <form className="ui large form" id="userForm">
+          <form onSubmit={this.submit} className="ui large form" id="userForm">
             <div className="ui stacked segment">
               {this.state.activeItem === "signup" ? (
                 <div className="field">
@@ -84,6 +84,7 @@ class UserForm extends Component {
                       value={this.state.username}
                       onChange={this.handleWriting}
                       placeholder="Username"
+                      required
                     />
                   </div>
                 </div>
@@ -97,6 +98,7 @@ class UserForm extends Component {
                     value={this.state.email}
                     onChange={this.handleWriting}
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
@@ -109,6 +111,7 @@ class UserForm extends Component {
                     value={this.state.password}
                     onChange={this.handleWriting}
                     placeholder="Password"
+                    required
                   />
                 </div>
               </div>
@@ -122,6 +125,7 @@ class UserForm extends Component {
                       value={this.state.passwordVerify}
                       onChange={this.handleWriting}
                       placeholder="Verify password"
+                      required
                     />
                   </div>
                 </div>
@@ -129,7 +133,6 @@ class UserForm extends Component {
               <input
                 className="ui fluid large yellow submit button"
                 type="submit"
-                onClick={this.submit}
                 value="Submit"
               />
             </div>
