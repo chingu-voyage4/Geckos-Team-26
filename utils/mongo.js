@@ -7,9 +7,15 @@ const SaveUserToDB = user => {
 
   const newUser = new UserModel({
     username: user.username,
-    email: user.email,
-    password: user.password
+    email: user.email
   });
+
+  if (user.password) {
+    newUser.password = user.password;
+  }
+  if (user.imgUrl) {
+    newUser.imgUrl = user.imgUrl;
+  }
 
   return new Promise((resolve, reject) => {
     newUser
