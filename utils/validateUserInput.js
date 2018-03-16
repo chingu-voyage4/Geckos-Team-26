@@ -1,10 +1,14 @@
 const validator = require("validator");
 
-const validateUsernameLength = username => username.length >= 3;
+const blacklist = /[-!$%^&*()_+|~=`\\#{}[\]:";'<>?,./]/;
+
+const validateUsernameLength = username =>
+  username.length >= 3 && !blacklist.test(username);
 const validateEmail = email => validator.isEmail(email);
-const validatePasswordLength = password => password.length >= 8;
+const validatePasswordLength = password =>
+  password.length >= 8 && !blacklist.test(password);
 const verifyPassword = (password, passwordVerify) =>
-  password === passwordVerify;
+  password === passwordVerify && !blacklist.test(passwordVerify);
 
 const checkNewUserInput = user =>
   new Promise((resolve, reject) => {
