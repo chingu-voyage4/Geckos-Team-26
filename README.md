@@ -35,6 +35,15 @@ module.exports = {
 
 The db URL and JWT secret will be shared privately between the team members.
 
+In order to use oauth in development you must add a file in client/src named googleCredentials.js and copy the following code into it
+
+```javascript
+const clientId = process.env.oAuthClientSecret || "OAUTH CREDENTIALS GO HERE";
+export default clientId;
+```
+
+The credentials will be shared with the team privately.
+
 Run this command to start the dev environment:
 
 * `npm run dev`
