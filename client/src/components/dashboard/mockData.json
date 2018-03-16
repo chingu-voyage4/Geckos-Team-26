@@ -1,0 +1,28 @@
+{
+  "pets": [
+    {
+      "_id": {
+        "$oid": "5aaabf9b734d1d6b7121be7f"
+      },
+      "petName": "Morgan",
+      "owner": {
+        "$oid": "5aa701a79959c036dcdf0fc5"
+      },
+      "species": "dog",
+      "breed": "boxer",
+      "description": "brindle and white, with docked tail"
+    },
+    {
+      "_id": {
+        "$oid": "5aaac046734d1d6b7121bea2"
+      },
+      "petName": "Cookie",
+      "owner": {
+        "$oid": "5aa701a79959c036dcdf0fc5"
+      },
+      "species": "cat",
+      "breed": "british shorthair",
+      "description": "mackerel tabby"
+    }
+  ]
+}
