@@ -64,7 +64,8 @@ describe("comapareHashes", () => {
 const {
   validateEmail,
   validatePasswordLength,
-  verifyPassword
+  verifyPassword,
+  validateUsernameLength
 } = require("../utils/validateUserInput");
 
 describe("validateEmail", () => {
@@ -146,6 +147,35 @@ describe("verifyPassword", () => {
   describe("Falsy results", () => {
     before(() => {
       result = verifyPassword("mypassword", "myfakepassword");
+    });
+
+    it("Should return a boolean", () => {
+      assert.isBoolean(result);
+    });
+    it("Should return false", () => {
+      assert.isFalse(result);
+    });
+  });
+});
+
+describe("validateUsernameLength", () => {
+  let result;
+
+  describe("Truthy results", () => {
+    before(() => {
+      result = validateUsernameLength("one");
+    });
+
+    it("Should return a boolean", () => {
+      assert.isBoolean(result);
+    });
+    it("Should return true", () => {
+      assert.isTrue(result);
+    });
+  });
+  describe("falsy results", () => {
+    before(() => {
+      result = validateUsernameLength("no");
     });
 
     it("Should return a boolean", () => {
