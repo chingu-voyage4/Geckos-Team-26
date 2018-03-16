@@ -46,6 +46,7 @@ class UserForm extends Component {
   submit(e) {
     e.preventDefault();
     const { activeItem, ...data } = this.state;
+
     if (activeItem === "signup") {
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
@@ -57,7 +58,17 @@ class UserForm extends Component {
       };
       fetch("/auth/signup", options).then(res => console.log(res));
     } else {
-      // TODO - login
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const { username, passwordVerify, ...loginData } = data;
+
+      const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(loginData)
+      };
+      fetch("/auth/login", options).then(res => console.log(res));
     }
   }
 
@@ -84,6 +95,7 @@ class UserForm extends Component {
                       value={this.state.username}
                       onChange={this.handleWriting}
                       placeholder="Username"
+                      minLength="3"
                       required
                     />
                   </div>
@@ -111,6 +123,7 @@ class UserForm extends Component {
                     value={this.state.password}
                     onChange={this.handleWriting}
                     placeholder="Password"
+                    minLength="8"
                     required
                   />
                 </div>
@@ -125,6 +138,7 @@ class UserForm extends Component {
                       value={this.state.passwordVerify}
                       onChange={this.handleWriting}
                       placeholder="Verify password"
+                      minLength="8"
                       required
                     />
                   </div>
