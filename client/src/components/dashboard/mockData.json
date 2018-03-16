@@ -5,6 +5,8 @@
         "$oid": "5aaabf9b734d1d6b7121be7f"
       },
       "petName": "Morgan",
+      "petAvatarURL":
+        "https://static-s.aa-cdn.net/img/ios/1034197692/e4b3e083e9e091de68aef16d5a7027a2?v=1",
       "owner": {
         "$oid": "5aa701a79959c036dcdf0fc5"
       },
@@ -17,6 +19,8 @@
         "$oid": "5aaac046734d1d6b7121bea2"
       },
       "petName": "Cookie",
+      "petAvatarURL":
+        "http://www.dailyworldfacts.com/wp-content/uploads/2011/06/facts-about-cat-fallen-cat.jpg",
       "owner": {
         "$oid": "5aa701a79959c036dcdf0fc5"
       },

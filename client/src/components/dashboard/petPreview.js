@@ -2,9 +2,8 @@ import React from "react";
 
 const PetPreview = props => (
   <div className="petPreview">
-    <h4>{props.petName}</h4>
-    <p>{props.species}</p>
-    <p>{props.breed}</p>
+    <img src={props.petAvatarURL} alt="Pet avatar" />
+    <p>{props.petName}</p>
   </div>
 );
 
