@@ -13,6 +13,9 @@ const SaveUserToDB = user => {
   if (user.password) {
     newUser.password = user.password;
   }
+  if (user.imgUrl) {
+    newUser.imgUrl = user.imgUrl;
+  }
 
   return new Promise((resolve, reject) => {
     newUser
