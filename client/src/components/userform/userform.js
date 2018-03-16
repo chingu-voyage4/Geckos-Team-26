@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import FormMenu from "./formmenu";
 import GoogleLogin from "../google-oauth-button/googleoAuthButton";
+import validateSignUp from "../../utils/validateUserInput";
 import "./userform.css";
 
 class UserForm extends Component {
@@ -49,6 +50,12 @@ class UserForm extends Component {
     const { activeItem, ...data } = this.state;
 
     if (activeItem === "signup") {
+      const isValid = validateSignUp(data);
+      if (isValid !== "valid") {
+        console.log(isValid);
+        return;
+      }
+
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
 
@@ -63,7 +70,6 @@ class UserForm extends Component {
       headers.append("Content-Type", "application/json");
 
       const { username, passwordVerify, ...loginData } = data;
-
       const options = {
         method: "POST",
         headers,
