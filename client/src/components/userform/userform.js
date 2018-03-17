@@ -64,7 +64,9 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(data)
       };
-      fetch("/auth/signup", options).then(res => console.log(res));
+      fetch("/auth/signup", options)
+        .then(res => res.json())
+        .then(json => console.log(json));
     } else {
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
@@ -75,7 +77,9 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(loginData)
       };
-      fetch("/auth/login", options).then(res => console.log(res));
+      fetch("/auth/login", options)
+        .then(res => res.json())
+        .then(json => console.log(json));
     }
   }
 
