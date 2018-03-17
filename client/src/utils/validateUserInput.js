@@ -17,8 +17,8 @@ const validateSignUp = input => {
   if (!validatePasswordLength(input.password)) {
     return "Password should be at least 3 characters long";
   }
-  if (!verifyPassword(input.password, input.verifyPassword)) {
-    return "Passwords don' match";
+  if (!verifyPassword(input.password, input.passwordVerify)) {
+    return "Passwords don't match";
   }
   return "valid";
 };
