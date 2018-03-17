@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import FormMenu from "./formmenu";
 import GoogleLogin from "../google-oauth-button/googleoAuthButton";
+import validateSignUp from "../../utils/validateUserInput";
 import "./userform.css";
 
 class UserForm extends Component {
@@ -47,7 +48,14 @@ class UserForm extends Component {
   submit(e) {
     e.preventDefault();
     const { activeItem, ...data } = this.state;
+
     if (activeItem === "signup") {
+      const isValid = validateSignUp(data);
+      if (isValid !== "valid") {
+        console.log(isValid);
+        return;
+      }
+
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
 
@@ -58,7 +66,16 @@ class UserForm extends Component {
       };
       fetch("/auth/signup", options).then(res => console.log(res));
     } else {
-      // TODO - login
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const { username, passwordVerify, ...loginData } = data;
+      const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(loginData)
+      };
+      fetch("/auth/login", options).then(res => console.log(res));
     }
   }
 
@@ -73,7 +90,7 @@ class UserForm extends Component {
             toggler={this.toggleForm}
             activeItem={this.state.activeItem}
           />
-          <form className="ui large form" id="userForm">
+          <form onSubmit={this.submit} className="ui large form" id="userForm">
             <div className="ui stacked segment">
               {this.state.activeItem === "signup" ? (
                 <div className="field">
@@ -85,6 +102,8 @@ class UserForm extends Component {
                       value={this.state.username}
                       onChange={this.handleWriting}
                       placeholder="Username"
+                      minLength="3"
+                      required
                     />
                   </div>
                 </div>
@@ -98,6 +117,7 @@ class UserForm extends Component {
                     value={this.state.email}
                     onChange={this.handleWriting}
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
@@ -110,6 +130,8 @@ class UserForm extends Component {
                     value={this.state.password}
                     onChange={this.handleWriting}
                     placeholder="Password"
+                    minLength="8"
+                    required
                   />
                 </div>
               </div>
@@ -123,6 +145,8 @@ class UserForm extends Component {
                       value={this.state.passwordVerify}
                       onChange={this.handleWriting}
                       placeholder="Verify password"
+                      minLength="8"
+                      required
                     />
                   </div>
                 </div>
@@ -130,7 +154,6 @@ class UserForm extends Component {
               <input
                 className="ui fluid large yellow submit button"
                 type="submit"
-                onClick={this.submit}
                 value="Submit"
               />
             </div>

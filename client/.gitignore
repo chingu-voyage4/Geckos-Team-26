@@ -9,6 +9,9 @@
 # production
 /build
 
+# oAuth
+/src/googleCredentials.js
+
 # misc
 .DS_Store
 .env.local
