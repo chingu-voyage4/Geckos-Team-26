@@ -13,9 +13,9 @@
 
 .custom-background-image {
   background-color: #edb506;
-  background-image: url(./my-pet-app.jpg) !important;
+  background-image: url(./my-pet-h1200.jpg) !important;
   background-size: cover !important;
-  background-position: center right !important;
+  background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
@@ -59,6 +59,40 @@
   .masthead {
     padding-left: 25vw !important;
     align-items: start;
+  }
+}
+
+/* ************************************ */
+/* RESPONSIVE HERO IMAGES */
+/* ************************************ */
+
+@media screen and (min-width: 1800px) {
+  .custom-background-image {
+    background-image: url(./my-pet-h1800.jpg) !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .custom-background-image {
+    background-image: url(./my-pet-h1200.jpg) !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .custom-background-image {
+    background-image: url(./my-pet-h600.jpg) !important;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 1200px) {
+  .custom-background-image {
+    background-image: url(./my-pet-v1200.jpg) !important;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-width: 600px) {
+  .custom-background-image {
+    background-image: url(./my-pet-v600.jpg) !important;
   }
 }
 
