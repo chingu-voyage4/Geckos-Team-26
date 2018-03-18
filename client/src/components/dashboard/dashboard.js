@@ -12,6 +12,7 @@ const Dashboard = () => (
     <PetPreview {...mockData.pets[0]} />
     <PetPreview {...mockData.pets[1]} />
     <Link to="/petform" className="ui yellow large label">
+    <Link to="/petform" className="ui black large label add-pet-button">
       <i className="plus icon" />
       Add a Pet
     </Link>
