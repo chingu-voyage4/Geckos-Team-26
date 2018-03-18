@@ -24,3 +24,10 @@
 .custom-yellow-header:hover .custom-hide {
   opacity: 1 !important;
 }
+
+@media screen and (max-width: 766px) {
+  .ui.stackable.menu .right.menu {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
