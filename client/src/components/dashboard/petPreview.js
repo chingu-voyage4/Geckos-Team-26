@@ -8,7 +8,7 @@ const PetPreview = props => (
       src={props.petAvatar}
       alt="Pet avatar"
     />
-    <p className="ui pointing label yellow">{props.petName}</p>
+    <p className="ui small header">{props.petName}</p>
   </div>
 );
 
