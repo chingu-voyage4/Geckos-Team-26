@@ -10,10 +10,27 @@
   align-items: center;
 }
 
+.pet-list {
+  width: 90vw;
+  max-width: 37.5em;
+  margin: 2em auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .pet-preview {
+  margin: 1em;
+  align-self: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 1.5em;
+}
+
+.ui.small.header {
+  margin-top: 5px;
+}
+
+.add-pet-button {
+  margin-top: 1.5em !important;
 }
