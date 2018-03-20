@@ -2,8 +2,8 @@
 /* PET DETAILS STYLES */
 /* ************************************ */
 
-.ui.header:first-child {
-  margin-top: 1em;
+.custom-header-margin {
+  margin: 2em auto !important;
 }
 
 .pet-details-grid {
@@ -12,11 +12,16 @@
   margin: 0 auto;
 }
 
+.ui.sub.header {
+  font-weight: normal;
+}
+
 @supports (display: grid) {
   .pet-details-grid {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 3em;
+    align-items: start;
   }
 
   @media screen and (max-width: 600px) {
