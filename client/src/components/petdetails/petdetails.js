@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import mockData from "./mockPetData.json";
+import VaccinationCard from "./vaccinationCard";
 import "./petdetails.css";
 
 const vaccinationRecords = mockData.healthRecord.vaccination;
@@ -10,7 +11,11 @@ const PetDetails = () => (
   <div className="ui container">
     <div className="ui basic segment right aligned">
       <Link to="/petform">
-        <img src={mockData.petAvatar} className="ui avatar image" />
+        <img
+          src={mockData.petAvatar}
+          alt="Pet Avatar"
+          className="ui avatar image"
+        />
         Edit {mockData.petName}
       </Link>
     </div>
@@ -18,7 +23,7 @@ const PetDetails = () => (
     <div className="pet-details-grid">
       <div className="ui card centered">
         <div className="image">
-          <img src={mockData.petAvatar} />
+          <img src={mockData.petAvatar} alt="Pet Avatar" />
         </div>
         <div className="content">
           <div className="header">{mockData.petName}</div>
@@ -58,33 +63,8 @@ const PetDetails = () => (
           {vaccinationRecords.length > 0 && (
             <div>
               <h4 className="ui horizontal divider header">Vaccinations</h4>
-              <div className="ui cards">
-                {/* TODO: Make it loop through each record */}
-                <div className="card">
-                  <div className="content">
-                    <div className="header">{vaccinationRecords[0].name}</div>
-                    <div className="meta">{vaccinationRecords[0].type}</div>
-                    <div className="description">
-                      <p>Last given on: {vaccinationRecords[0].lastGiven}</p>
-                      <p>
-                        Frequency reminder: {vaccinationRecords[0].frequency}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="card">
-                  <div className="content">
-                    <div className="header">{vaccinationRecords[1].name}</div>
-                    <div className="meta">{vaccinationRecords[1].type}</div>
-                    <div className="description">
-                      <p>Last given on: {vaccinationRecords[1].lastGiven}</p>
-                      <p>
-                        Frequency reminder: {vaccinationRecords[1].frequency}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* TODO: Make it loop through each record */}
+              <VaccinationCard />
             </div>
           )}
           {medicationRecords.length > 0 && (
