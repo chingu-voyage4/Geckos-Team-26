@@ -63,7 +63,6 @@ const PetDetails = () => (
           {vaccinationRecords.length > 0 && (
             <div>
               <h4 className="ui horizontal divider header">Vaccinations</h4>
-              {/* TODO: Make it loop through each record */}
               <VaccinationCard />
             </div>
           )}
