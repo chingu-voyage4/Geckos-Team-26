@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import mockData from "./mockPetData.json";
 import VaccinationCard from "./vaccinationCard";
+import MedicationCard from "./medicationCard";
 import "./petdetails.css";
 
 const vaccinationRecords = mockData.healthRecord.vaccination;
@@ -77,24 +78,10 @@ const PetDetails = () => (
           )}
           {medicationRecords.length > 0 && (
             <div>
-              <div className="ui cards">
-                {/* TODO: Make it loop through each record */}
-                <div className="card">
-                  <div className="content">
-                    <div className="header">{medicationRecords[0].name}</div>
-                    <div className="meta">{medicationRecords[0].type}</div>
-                    <div className="description">
-                      <p>Dosage: {medicationRecords[0].lastGiven}</p>
-                      <p>Frequency: {medicationRecords[0].frequency}</p>
-                      <p>Last given on: {medicationRecords[0].lastGiven}</p>
-                      <p>Other notes: {medicationRecords[0].notes}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <h5 className="ui horizontal divider header custom-header-margin">
                 Medications
               </h5>
+              <MedicationCard />
             </div>
           )}
         </div>
