@@ -1,0 +1,26 @@
+/* ************************************ */
+/* PET DETAILS STYLES */
+/* ************************************ */
+
+.ui.header:first-child {
+  margin-top: 1em;
+}
+
+.pet-details-grid {
+  display: flex;
+  margin: 0 auto;
+}
+
+@supports (display: grid) {
+  .pet-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 3em;
+  }
+
+  @media screen and (max-width: 600px) {
+    .pet-details-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

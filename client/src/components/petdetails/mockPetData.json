@@ -1,0 +1,46 @@
+{
+  "_id": {
+    "$oid": "5aaabf9b734d1d6b7121be7f"
+  },
+  "petName": "Morgan",
+  "owner": {
+    "$oid": "5aa701a79959c036dcdf0fc5"
+  },
+  "petAvatar":
+    "https://static-s.aa-cdn.net/img/ios/1034197692/e4b3e083e9e091de68aef16d5a7027a2?v=1",
+  "species": "Dog",
+  "breed": "Boxer",
+  "gender": "Male",
+  "birthDate": "2015-01-26",
+  "neutered": true,
+  "microchip": "7EJ28ED8373",
+  "description": "Brindle and white, with docked tail",
+  "healthRecord": {
+    "weight": 35,
+    "unit": "kgs",
+    "vaccination": [
+      {
+        "name": "Flu Vacc",
+        "type": "Immunity booster",
+        "lastGiven": "2018-01-17",
+        "frequency": "Annual"
+      },
+      {
+        "name": "Rabies Vacc",
+        "type": "Anti rabies",
+        "lastGiven": "2017-06-08",
+        "frequency": "Annual"
+      }
+    ],
+    "medication": [
+      {
+        "name": "Clear Eyes",
+        "type": "Eye drops",
+        "frequency": "3 times daily",
+        "dose": "1 drop",
+        "lastGiven": "2018-03-05",
+        "notes": "lorem ipsum dolor sit amet"
+      }
+    ]
+  }
+}
