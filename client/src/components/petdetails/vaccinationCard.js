@@ -11,14 +11,19 @@ const VaccinationCard = () => {
         <div className="header">{record.name}</div>
         <div className="meta">{record.type}</div>
         <div className="description">
-          <p>Last given on: {record.lastGiven}</p>
-          <p>Frequency reminder: {record.frequency}</p>
+          <p>
+            <span className="ui sub header">Last given on:</span>{" "}
+            {record.lastGiven}
+          </p>
+          <p>
+            <span className="ui sub header">Frequency:</span> {record.frequency}
+          </p>
         </div>
       </div>
     </div>
   ));
 
-  return <div className="ui cards">{cards}</div>;
+  return <div className="ui three stackable cards">{cards}</div>;
 };
 
 export default VaccinationCard;

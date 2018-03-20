@@ -20,23 +20,29 @@
     "unit": "kgs",
     "vaccination": [
       {
-        "name": "Flu Vacc",
+        "name": "DHPP",
         "type": "Immunity booster",
         "lastGiven": "2018-01-17",
         "frequency": "Annual"
       },
       {
-        "name": "Rabies Vacc",
+        "name": "Rabivac",
         "type": "Anti rabies",
-        "lastGiven": "2017-06-08",
+        "lastGiven": "2049-06-08",
         "frequency": "Annual"
+      },
+      {
+        "name": "Blip blop",
+        "type": "Bip bip",
+        "lastGiven": "1985-12-02",
+        "frequency": "Monthly"
       }
     ],
     "medication": [
       {
         "name": "Clear Eyes",
         "type": "Eye drops",
-        "frequency": "3 times daily",
+        "frequency": "3 times a day",
         "dose": "1 drop",
         "lastGiven": "2018-03-05",
         "notes": "lorem ipsum dolor sit amet"
