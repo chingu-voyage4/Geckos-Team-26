@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import mockData from "./mockPetData.json";
 import "./petdetails.css";
+
+const vaccinationRecords = mockData.healthRecord.vaccination;
+const medicationRecords = mockData.healthRecord.medication;
+
 const PetDetails = () => (
   <div className="ui container">
     <div className="ui basic segment right aligned">
@@ -51,6 +55,58 @@ const PetDetails = () => (
             sequi blanditiis tempore labore voluptates, aliquid odio adipisci
             temporibus voluptatem animi eligendi est hic.
           </p>
+          {vaccinationRecords.length > 0 && (
+            <div>
+              <h4 className="ui horizontal divider header">Vaccinations</h4>
+              <div className="ui cards">
+                {/* TODO: Make it loop through each record */}
+                <div className="card">
+                  <div className="content">
+                    <div className="header">{vaccinationRecords[0].name}</div>
+                    <div className="meta">{vaccinationRecords[0].type}</div>
+                    <div className="description">
+                      <p>Last given on: {vaccinationRecords[0].lastGiven}</p>
+                      <p>
+                        Frequency reminder: {vaccinationRecords[0].frequency}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="content">
+                    <div className="header">{vaccinationRecords[1].name}</div>
+                    <div className="meta">{vaccinationRecords[1].type}</div>
+                    <div className="description">
+                      <p>Last given on: {vaccinationRecords[1].lastGiven}</p>
+                      <p>
+                        Frequency reminder: {vaccinationRecords[1].frequency}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {medicationRecords.length > 0 && (
+            <div>
+              <h4 className="ui horizontal divider header">Medications</h4>
+              <div className="ui cards">
+                {/* TODO: Make it loop through each record */}
+                <div className="card">
+                  <div className="content">
+                    <div className="header">{medicationRecords[0].name}</div>
+                    <div className="meta">{medicationRecords[0].type}</div>
+                    <div className="description">
+                      <p>Dosage: {medicationRecords[0].lastGiven}</p>
+                      <p>Frequency: {medicationRecords[0].frequency}</p>
+                      <p>Last given on: {medicationRecords[0].lastGiven}</p>
+                      <p>Other notes: {medicationRecords[0].notes}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
