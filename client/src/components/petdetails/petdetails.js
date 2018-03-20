@@ -10,6 +10,8 @@ const PetDetails = () => (
         Edit {mockData.petName}
       </Link>
     </div>
+
+    <div className="pet-details-grid">
       <div className="ui card centered">
         <div className="image">
           <img src={mockData.petAvatar} />
@@ -32,5 +34,27 @@ const PetDetails = () => (
           </span>
         </div>
       </div>
+
+      <div className="container">
+        <div className="content">
+          <h4 className="ui horizontal divider header">
+            <i className="heartbeat icon" />
+            Health Records
+          </h4>
+          <p>
+            Current weight: {mockData.healthRecord.weight}{" "}
+            {mockData.healthRecord.unit}
+          </p>
+          <p>
+            Other info: Lorem ipsum dolor sit amet, consectetur adipisicing
+            elit. Ab iure sapiente necessitatibus, facere amet, velit similique,
+            sequi blanditiis tempore labore voluptates, aliquid odio adipisci
+            temporibus voluptatem animi eligendi est hic.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export default PetDetails;
