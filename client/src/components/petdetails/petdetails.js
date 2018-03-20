@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import mockData from "./mockPetData.json";
 import VaccinationCard from "./vaccinationCard";
+import MedicationCard from "./medicationCard";
 import "./petdetails.css";
 
 const vaccinationRecords = mockData.healthRecord.vaccination;
@@ -31,8 +32,14 @@ const PetDetails = () => (
             {mockData.gender} {mockData.species}, {mockData.breed}
           </div>
           <div className="description">
-            <p>Description: {mockData.description}</p>
-            <p>Microchip: {mockData.microchip}</p>
+            <p>
+              <span className="ui sub header">Description:</span>{" "}
+              {mockData.description}
+            </p>
+            <p>
+              <span className="ui sub header">Microchip:</span>{" "}
+              {mockData.microchip}
+            </p>
           </div>
         </div>
         <div className="extra content">
@@ -51,39 +58,30 @@ const PetDetails = () => (
             Health Records
           </h4>
           <p>
-            Current weight: {mockData.healthRecord.weight}{" "}
-            {mockData.healthRecord.unit}
+            <span className="ui sub header">Current weight: </span>
+            {mockData.healthRecord.weight} {mockData.healthRecord.unit}
           </p>
           <p>
-            Other info: Lorem ipsum dolor sit amet, consectetur adipisicing
-            elit. Ab iure sapiente necessitatibus, facere amet, velit similique,
-            sequi blanditiis tempore labore voluptates, aliquid odio adipisci
-            temporibus voluptatem animi eligendi est hic.
+            <span className="ui sub header">Other info:</span> Lorem ipsum dolor
+            sit amet, consectetur adipisicing elit. Ab iure sapiente
+            necessitatibus, facere amet, velit similique, sequi blanditiis
+            tempore labore voluptates, aliquid odio adipisci temporibus
+            voluptatem animi eligendi est hic.
           </p>
           {vaccinationRecords.length > 0 && (
             <div>
-              <h4 className="ui horizontal divider header">Vaccinations</h4>
+              <h5 className="ui horizontal divider header custom-header-margin">
+                Vaccinations
+              </h5>
               <VaccinationCard />
             </div>
           )}
           {medicationRecords.length > 0 && (
             <div>
-              <h4 className="ui horizontal divider header">Medications</h4>
-              <div className="ui cards">
-                {/* TODO: Make it loop through each record */}
-                <div className="card">
-                  <div className="content">
-                    <div className="header">{medicationRecords[0].name}</div>
-                    <div className="meta">{medicationRecords[0].type}</div>
-                    <div className="description">
-                      <p>Dosage: {medicationRecords[0].lastGiven}</p>
-                      <p>Frequency: {medicationRecords[0].frequency}</p>
-                      <p>Last given on: {medicationRecords[0].lastGiven}</p>
-                      <p>Other notes: {medicationRecords[0].notes}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h5 className="ui horizontal divider header custom-header-margin">
+                Medications
+              </h5>
+              <MedicationCard />
             </div>
           )}
         </div>
