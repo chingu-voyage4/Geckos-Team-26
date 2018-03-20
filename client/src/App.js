@@ -8,6 +8,7 @@ import Header from "./components/header/header";
 import Main from "./components/main/main";
 import Dashboard from "./components/dashboard/dashboard";
 import PetForm from "./components/petform/petform";
+import PetDetails from "./components/petdetails/petdetails";
 import UserForm from "./components/userform/userform";
 import Profile from "./components/profile/profile";
 import Footer from "./components/footer/footer";
@@ -23,6 +24,7 @@ class App extends Component {
             <Route path="/" component={Main} exact />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/petform" component={PetForm} />
+            <Route path="/petdetails" component={PetDetails} />
             <Route
               path="/login"
               render={props => <UserForm activeItem="login" {...props} />}
