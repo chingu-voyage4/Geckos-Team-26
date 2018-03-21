@@ -15,11 +15,23 @@ import Footer from "./components/footer/footer";
 import NotFound from "./components/notfound/notfound";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: {
+        id: "",
+        username: "",
+        email: "",
+        imgUrl: ""
+      }
+    };
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div className="app">
-          <Header />
+          <Header username={this.state.user.username} />
           <Switch>
             <Route path="/" component={Main} exact />
             <Route path="/dashboard" component={Dashboard} />
