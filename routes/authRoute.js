@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const jwt = require("jsonwebtoken");
 const { checkNewUserInput } = require("../utils/validateUserInput");
 const { hashPassword, compareHashes } = require("../utils/hashing");
 const { SaveUserToDB, GetUserFromDB } = require("../utils/mongo");
+const { createToken, createUserData } = require("../utils/helper");
 const { jwtSecret } = require("../utils/config");
 
 router.post("/signup", (req, res) => {
@@ -23,7 +23,11 @@ router.post("/signup", (req, res) => {
         };
 
         SaveUserToDB(validNewUser)
-          .then(response => res.json(response))
+          .then(user => {
+            const token = createToken(user.email, jwtSecret);
+            const userData = createUserData(user);
+            return res.json({ token, userData });
+          })
           .catch(response => {
             res.status(500).json({ message: response.message });
           });
@@ -44,8 +48,9 @@ router.post("/login", (req, res) => {
         if (!result) {
           return res.status(400).json({ message: "Incorrect password" });
         }
-        const token = jwt.sign(user.email, jwtSecret);
-        return res.json({ token });
+        const token = createToken(user.email, jwtSecret);
+        const userData = createUserData(user);
+        return res.json({ token, userData });
       });
     })
     .catch(err => res.status(400).json({ message: err.message }));

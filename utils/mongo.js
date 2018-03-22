@@ -21,8 +21,10 @@ const SaveUserToDB = user => {
     newUser
       .save()
       .then(() => {
-        mongoose.disconnect();
-        return resolve({ message: "OK" });
+        GetUserFromDB(user).then(user => {
+          mongoose.disconnect();
+          return resolve(user);
+        });
       })
       .catch(() => {
         mongoose.disconnect();
