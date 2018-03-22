@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import FormMenu from "./formmenu";
 import GoogleLogin from "../google-oauth-button/googleoAuthButton";
 import validateSignUp from "../../utils/validateUserInput";
@@ -66,7 +67,15 @@ class UserForm extends Component {
       };
       fetch("/auth/signup", options)
         .then(res => res.json())
-        .then(json => console.log(json));
+        .then(json => {
+          this.props.updateUser(
+            json.userData.id,
+            json.userData.username,
+            json.userData.email,
+            json.userData.imgUrl
+          );
+          console.log(json.token);
+        });
     } else {
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
@@ -79,12 +88,22 @@ class UserForm extends Component {
       };
       fetch("/auth/login", options)
         .then(res => res.json())
-        .then(json => console.log(json));
+        .then(json => {
+          this.props.updateUser(
+            json.userData.id,
+            json.userData.username,
+            json.userData.email,
+            json.userData.imgUrl
+          );
+          console.log(json.token);
+        });
     }
   }
 
   render() {
-    return (
+    return this.props.username ? (
+      <Redirect to="/dashboard" />
+    ) : (
       <div className="ui middle aligned center aligned grid custom-display-form">
         <div className="column">
           <h2 className="ui black header">
