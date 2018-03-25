@@ -68,12 +68,7 @@ class UserForm extends Component {
       fetch("/auth/signup", options)
         .then(res => res.json())
         .then(json => {
-          this.props.updateUser(
-            json.userData.id,
-            json.userData.username,
-            json.userData.email,
-            json.userData.imgUrl
-          );
+          this.props.updateUser(json.userData);
           console.log(json.token);
         });
     } else {
@@ -89,12 +84,7 @@ class UserForm extends Component {
       fetch("/auth/login", options)
         .then(res => res.json())
         .then(json => {
-          this.props.updateUser(
-            json.userData.id,
-            json.userData.username,
-            json.userData.email,
-            json.userData.imgUrl
-          );
+          this.props.updateUser(json.userData);
           console.log(json.token);
         });
     }

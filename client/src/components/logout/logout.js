@@ -4,15 +4,10 @@ import { Redirect } from "react-router-dom";
 class Logout extends Component {
   constructor(props) {
     super(props);
-    this.updateUser = this.updateUser.bind(this);
   }
 
   componentDidMount() {
-    this.updateUser("", "", "", "");
-  }
-
-  updateUser(id, username, email, imgUrl) {
-    this.props.updateUser(id, username, email, imgUrl);
+    this.props.updateUser({});
   }
 
   render() {

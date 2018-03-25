@@ -29,13 +29,13 @@ class App extends Component {
     this.updateUserInState = this.updateUserInState.bind(this);
   }
 
-  updateUserInState(id, username, email, imgUrl) {
+  updateUserInState(user) {
     this.setState({
       user: {
-        id,
-        username,
-        email,
-        imgUrl
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        imgUrl: user.imgUrl
       }
     });
   }
