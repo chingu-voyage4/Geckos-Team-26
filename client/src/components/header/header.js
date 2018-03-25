@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import PublicMenu from "./publicmenu";
+import PrivateMenu from "./privatemenu";
 
 import "./header.css";
 
@@ -12,46 +14,9 @@ const Header = props => (
       </Link>
     </div>
     {props.username ? (
-      <nav className="right menu">
-        <NavLink
-          to="/dashboard"
-          activeClassName="is-active active"
-          className="item"
-        >
-          Dashboard
-        </NavLink>
-        <NavLink
-          to="/profile"
-          activeClassName="is-active active"
-          className="item"
-        >
-          {props.username}
-        </NavLink>
-        <NavLink
-          to="/logout"
-          activeClassName="is-active active"
-          className="item"
-        >
-          Log out
-        </NavLink>
-      </nav>
+      <PrivateMenu username={props.username} />
     ) : (
-      <nav className="right menu">
-        <NavLink
-          to="/login"
-          activeClassName="is-active active"
-          className="item"
-        >
-          Log in
-        </NavLink>
-        <NavLink
-          to="/signup"
-          activeClassName="is-active active"
-          className="item"
-        >
-          Sign up
-        </NavLink>
-      </nav>
+      <PublicMenu />
     )}
   </header>
 );
