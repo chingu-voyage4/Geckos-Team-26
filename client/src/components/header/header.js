@@ -1,9 +1,11 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import PublicMenu from "./publicmenu";
+import PrivateMenu from "./privatemenu";
 
 import "./header.css";
 
-const Header = () => (
+const Header = props => (
   <header className="ui inverted menu stackable">
     <div className="header item yellow">
       <Link to="/" className="custom-yellow-header">
@@ -11,17 +13,11 @@ const Header = () => (
         MyPet
       </Link>
     </div>
-    <nav className="right menu">
-      <NavLink to="/login" activeClassName="is-active active" className="item">
-        Log in
-      </NavLink>
-      <NavLink to="/signup" activeClassName="is-active active" className="item">
-        Sign up
-      </NavLink>
-      <NavLink to="/logout" activeClassName="is-active active" className="item">
-        Log out
-      </NavLink>
-    </nav>
+    {props.username ? (
+      <PrivateMenu username={props.username} />
+    ) : (
+      <PublicMenu />
+    )}
   </header>
 );
 
