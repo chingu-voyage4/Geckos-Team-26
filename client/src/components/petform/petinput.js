@@ -6,3 +6,5 @@ const PetInput = props => (
     <input type={props.type} required={props.required} />
   </label>
 );
+
+export default PetInput;

@@ -4,7 +4,7 @@
       "name": "Name",
       "type": "text",
       "required": true,
-      "values": []
+      "values": ""
     },
     {
       "name": "Sex",
@@ -16,13 +16,13 @@
       "name": "Species",
       "type": "text",
       "required": false,
-      "values": []
+      "values": ""
     },
     {
       "name": "Description",
       "type": "text",
       "required": true,
-      "values": []
+      "values": ""
     }
   ]
 }
