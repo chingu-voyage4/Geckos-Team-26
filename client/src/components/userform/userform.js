@@ -85,8 +85,9 @@ class UserForm extends Component {
         .then(res => res.json())
         .then(json => {
           this.props.updateUser(json.userData);
-          console.log(json.token);
-        });
+          window.sessionStorage.setItem("token", json.token);
+        })
+        .catch(error => console.log(error));
     }
   }
 
@@ -170,7 +171,7 @@ class UserForm extends Component {
                 value="Submit"
               />
             </div>
-            <GoogleLogin />
+            <GoogleLogin updateUser={this.props.updateUser} />
           </form>
         </div>
       </div>
