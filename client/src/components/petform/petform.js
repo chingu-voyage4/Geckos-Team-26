@@ -6,15 +6,18 @@ import mock from "./mockPetForm.json";
 // wrapper -> <form> -> <input>
 // <Input type... required... name>
 // [{Label:, type:, required:}]
-/*eslint-disable */
+
 class PetForm extends Component {
   constructor(props) {
     super(props);
 
     const inputs = mock.fields.map(el => el.name); // ['Name','Sex']
-    let initialState = {};
-    inputs.forEach(el => (initialState[el] = ""));
+    const initialState = {};
+    inputs.forEach(el => {
+      initialState[el] = "";
+    });
     this.state = initialState;
+
     this.handleWriting = this.handleWriting.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -36,7 +39,7 @@ class PetForm extends Component {
       <PetInput
         {...el}
         value={this.state[el.name]}
-        onChange={this.handleWriting}
+        handleWriting={this.handleWriting}
       />
     ));
     return (
