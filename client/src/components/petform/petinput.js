@@ -2,8 +2,14 @@ import React from "react";
 
 const PetInput = props => (
   <label>
-    {props.label}
-    <input type={props.type} required={props.required} />
+    {props.name}
+    <input
+      name={props.name}
+      value={props.value}
+      type={props.type}
+      required={props.required}
+      onChange={props.onChange}
+    />
   </label>
 );
 

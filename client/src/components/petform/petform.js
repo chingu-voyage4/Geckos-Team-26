@@ -15,6 +15,8 @@ class PetForm extends Component {
     let initialState = {};
     inputs.forEach(el => (initialState[el] = ""));
     this.state = initialState;
+    this.handleWriting = this.handleWriting.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   handleWriting(e) {
@@ -24,15 +26,28 @@ class PetForm extends Component {
     });
   }
 
+  submit(e) {
+    e.preventDefault();
+    console.log(this.state);
+  }
+
   render() {
     const petInputs = mock.fields.map(el => (
-      <PetInput {...el} value={this.state[el.name]} />
+      <PetInput
+        {...el}
+        value={this.state[el.name]}
+        onChange={this.handleWriting}
+      />
     ));
     return (
-      <div>
+      <form onSubmit={this.submit}>
         {petInputs}
-        <h1>{JSON.stringify(this.state)}</h1>
-      </div>
+        <input
+          className="ui fluid large yellow submit button"
+          type="submit"
+          value="Submit"
+        />
+      </form>
     );
   }
 }
