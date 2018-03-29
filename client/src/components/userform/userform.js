@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import FormMenu from "./formmenu";
 import GoogleLogin from "../google-oauth-button/googleoAuthButton";
 import validateSignUp from "../../utils/validateUserInput";
+import postData from "../../utils/postData";
 import "./userform.css";
 
 class UserForm extends Component {
@@ -66,11 +67,14 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(data)
       };
-      fetch("/auth/signup", options)
-        .then(res => res.json())
-        .then(json => {
-          this.props.updateUser(json.userData);
-          sessionStorage.setItem("token", json.token);
+      const postRoute = "/auth/signup";
+
+      postData(postRoute, options)
+        .then(res => {
+          const jsonResponse = res;
+          this.props.updateUser(jsonResponse.userData);
+          sessionStorage.setItem("token", jsonResponse.token);
+          sessionStorage.setItem("user", JSON.stringify(jsonResponse.userData));
         })
         .catch(error => console.log(error));
     } else {
@@ -84,11 +88,14 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(loginData)
       };
-      fetch("/auth/login", options)
-        .then(res => res.json())
-        .then(json => {
-          this.props.updateUser(json.userData);
-          sessionStorage.setItem("token", json.token);
+      const postRoute = "/auth/login";
+
+      postData(postRoute, options)
+        .then(res => {
+          const jsonResponse = res;
+          this.props.updateUser(jsonResponse.userData);
+          sessionStorage.setItem("token", jsonResponse.token);
+          sessionStorage.setItem("user", JSON.stringify(jsonResponse.userData));
         })
         .catch(error => console.log(error));
     }

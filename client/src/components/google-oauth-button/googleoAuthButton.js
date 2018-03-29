@@ -37,9 +37,10 @@ class GoogleoAuthButton extends Component {
           payload.user.email
         }&imgurl=${payload.user.imgUrl}&name=${payload.user.name}`
       };
+      const postRoute = "/oauth/google";
 
       if (payload.accessToken) {
-        postData(options).then(res => {
+        postData(postRoute, options).then(res => {
           const jsonResponse = res;
           this.props.updateUser(jsonResponse.userData);
           sessionStorage.setItem("token", jsonResponse.token);

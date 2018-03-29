@@ -1,6 +1,6 @@
-const postData = options =>
+const postData = (postRoute, options) =>
   new Promise((resolve, reject) => {
-    fetch("/oauth/google", options)
+    fetch(postRoute, options)
       .then(res => res.json())
       .then(json => {
         resolve(json);
