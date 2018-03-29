@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 class Logout extends Component {
   componentDidMount() {
     this.props.updateUser({});
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
   }
 
   render() {
