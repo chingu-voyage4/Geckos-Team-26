@@ -51,6 +51,7 @@ class UserForm extends Component {
     const { activeItem, ...data } = this.state;
 
     if (activeItem === "signup") {
+      // When a user submits the signup form
       const isValid = validateSignUp(data);
       if (isValid !== "valid") {
         console.log(isValid);
@@ -69,9 +70,11 @@ class UserForm extends Component {
         .then(res => res.json())
         .then(json => {
           this.props.updateUser(json.userData);
-          console.log(json.token);
-        });
+          sessionStorage.setItem("token", json.token);
+        })
+        .catch(error => console.log(error));
     } else {
+      // When a user submits the login form
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
 
@@ -85,7 +88,7 @@ class UserForm extends Component {
         .then(res => res.json())
         .then(json => {
           this.props.updateUser(json.userData);
-          window.sessionStorage.setItem("token", json.token);
+          sessionStorage.setItem("token", json.token);
         })
         .catch(error => console.log(error));
     }

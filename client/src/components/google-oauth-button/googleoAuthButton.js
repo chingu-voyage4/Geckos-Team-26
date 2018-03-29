@@ -28,10 +28,20 @@ class GoogleoAuthButton extends Component {
           name: response.profileObj.name
         }
       };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: `accesstoken=${payload.accessToken}&email=${
+          payload.user.email
+        }&imgurl=${payload.user.imgUrl}&name=${payload.user.name}`
+      };
 
       if (payload.accessToken) {
-        postData(payload).then(res => {
+        postData(options).then(res => {
           const jsonResponse = res;
+          this.props.updateUser(jsonResponse.userData);
           sessionStorage.setItem("token", jsonResponse.token);
           sessionStorage.setItem("user", JSON.stringify(jsonResponse.userData));
         });
