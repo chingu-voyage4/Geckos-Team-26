@@ -1,0 +1,28 @@
+{
+  "fields": [
+    {
+      "name": "Name",
+      "type": "text",
+      "required": true,
+      "values": ""
+    },
+    {
+      "name": "Sex",
+      "type": "radio",
+      "required": false,
+      "values": ["Male", "Female"]
+    },
+    {
+      "name": "Species",
+      "type": "text",
+      "required": false,
+      "values": ""
+    },
+    {
+      "name": "Description",
+      "type": "text",
+      "required": true,
+      "values": ""
+    }
+  ]
+}
