@@ -16,7 +16,8 @@
     "server": "nodemon server.js",
     "dev":
       "concurrently --kill-others-on-fail \"npm run lint:server\" \"npm run lint:client\" \"npm run server\" \"npm run client\"",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "build": "cd client && npm run build"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
