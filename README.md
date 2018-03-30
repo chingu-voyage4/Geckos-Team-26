@@ -13,19 +13,21 @@ A web app to help pet owners record their pet's progress, keep track of essentia
 * [Garrus](https://github.com/GarrusNapp)
 * [Maíra Martins K](https://github.com/mairamartinsk)
 
-## How to start the app
+## Environment Variables
 
-Run the following commands to install dependencies for both the client and server
+The environment varibales for `DBURL`, `JWTSECRET` and `oAuthClientSecret` must be set on your local environment.
 
-* `npm run installserver`
-* `npm run installclient`
+* [Set environment variables on Linux](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps)
+* [Set environment variables on Mac](https://stackoverflow.com/questions/7501678/set-environment-variables-on-mac-os-x-lion)
+* [Set environment variables on Windows](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/)
 
-In order to connect to the database you must first create a new file in the utils directory named config.js.
-You must then copy the following code into the file
+Also ensure that the following files match the examples below before commiting to git.
+
+### utils/config.js
 
 ```javascript
-const dbUrl = process.env.DBURL || "PUT THE DB URL IN HERE";
-const jwtSecret = process.env.JWTSECRET || "PUT THE JWT SECRET IN HERE";
+const dbUrl = process.env.DBURL;
+const jwtSecret = process.env.JWTSECRET;
 
 module.exports = {
   dbUrl,
@@ -33,16 +35,19 @@ module.exports = {
 };
 ```
 
-The db URL and JWT secret will be shared privately between the team members.
-
-In order to use oauth in development you must add a file in client/src named googleCredentials.js and copy the following code into it
+### client/src/googleCredentials.js
 
 ```javascript
-const clientId = process.env.oAuthClientSecret || "OAUTH CREDENTIALS GO HERE";
+const clientId = process.env.oAuthClientSecret;
 export default clientId;
 ```
 
-The credentials will be shared with the team privately.
+## How to start the app
+
+Run the following commands to install dependencies for both the client and server
+
+* `npm run installserver`
+* `npm run installclient`
 
 Run this command to start the dev environment:
 
