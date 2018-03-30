@@ -15,11 +15,21 @@ A web app to help pet owners record their pet's progress, keep track of essentia
 
 ## Environment Variables
 
-The environment varibales for `DBURL`, `JWTSECRET` and `oAuthClientSecret` must be set on your local environment.
+To set up the environment variables..
 
-* [Set environment variables on Linux](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps)
-* [Set environment variables on Mac](https://stackoverflow.com/questions/7501678/set-environment-variables-on-mac-os-x-lion)
-* [Set environment variables on Windows](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/)
+* Enter `npm run updateall` to install the dotenv dependency.
+* Create a file named .env in the root directory and add the following code.
+
+```javascript
+DBURL=PUT THE DB URL HERE
+JWTSECRET=PUT THE JWT SECRET HERE
+```
+
+* Create a file named .env in the /client directory and add the following code.
+
+```javascript
+REACT_APP_oAuthClientSecret=PUT THE OAUTH CLIENT SECRET HERE
+```
 
 Also ensure that the following files match the examples below before commiting to git.
 
@@ -38,7 +48,7 @@ module.exports = {
 ### client/src/googleCredentials.js
 
 ```javascript
-const clientId = process.env.oAuthClientSecret;
+const clientId = process.env.REACT_APP_oAuthClientSecret;
 export default clientId;
 ```
 

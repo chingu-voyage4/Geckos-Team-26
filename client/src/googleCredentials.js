@@ -1,2 +1,2 @@
-const clientId = process.env.oAuthClientSecret;
+const clientId = process.env.REACT_APP_oAuthClientSecret;
 export default clientId;

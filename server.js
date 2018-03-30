@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 
+require("dotenv").config();
+
 const server = express();
 
 server.use(bodyParser.urlencoded({ extended: false }));
