@@ -43,14 +43,18 @@ class PetForm extends Component {
       />
     ));
     return (
-      <form onSubmit={this.submit}>
-        {petInputs}
-        <input
-          className="ui fluid large yellow submit button"
-          type="submit"
-          value="Submit"
-        />
-      </form>
+      <div className="ui middle aligned center aligned grid custom-display-form">
+        <div className="column">
+          <form onSubmit={this.submit} className="ui large form" id="petForm">
+            <div className="ui stacked segment">{petInputs}</div>
+            <input
+              className="ui fluid large yellow submit button"
+              type="submit"
+              value="Submit"
+            />
+          </form>
+        </div>
+      </div>
     );
   }
 }
