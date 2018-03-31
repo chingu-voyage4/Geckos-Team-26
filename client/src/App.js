@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/header/header";
+import PrivateRoute from "./components/PrivateRoute";
 import Main from "./components/main/main";
 import Dashboard from "./components/dashboard/dashboard";
 import PetForm from "./components/petform/petform";
@@ -74,8 +75,6 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/profile" component={Profile} />
             <Route
               path="/logout"
               render={props => (
@@ -87,8 +86,26 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/petform" component={PetForm} />
-            <Route path="/petdetails" component={PetDetails} />
+            <PrivateRoute
+              path="/dashboard"
+              component={Dashboard}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/profile"
+              component={Profile}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/petform"
+              component={PetForm}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/petdetails"
+              component={PetDetails}
+              isLoggedIn={this.state.isLoggedIn}
+            />
             <Route component={NotFound} />
           </Switch>
           <Footer />
