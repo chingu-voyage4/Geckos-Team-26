@@ -23,7 +23,6 @@ class PetForm extends Component {
     this.setState({
       [name]: e.target.value
     });
-    console.log(e.target);
   }
 
   handleCheckbox(e) {
@@ -42,6 +41,7 @@ class PetForm extends Component {
   render() {
     const petInputs = mock.fields.map(el => (
       <PetInput
+        key={el.name}
         {...el}
         value={this.state[el.name]}
         handleWriting={this.handleWriting}

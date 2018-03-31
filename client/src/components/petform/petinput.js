@@ -12,6 +12,7 @@ const PetInput = props => {
             type={props.type}
             required={props.required}
             onChange={props.handleWriting}
+            key={props.name}
           />
         </label>
       </div>
@@ -19,7 +20,7 @@ const PetInput = props => {
   }
   if (props.type === "radio") {
     const radios = props.values.map(el => (
-      <label>
+      <label key={el}>
         {el}
         <input
           name={props.name}
@@ -31,20 +32,23 @@ const PetInput = props => {
         />
       </label>
     ));
-    return radios;
+    return <div className="ui radio checkbox">{radios}</div>;
   }
   if (props.type === "checkbox") {
     return (
-      <label>
-        {props.name}
-        <input
-          name={props.name}
-          checked={props.value}
-          type={props.type}
-          required={props.required}
-          onChange={props.handleCheckbox}
-        />
-      </label>
+      <div>
+        <label>
+          {props.name}
+          <input
+            name={props.name}
+            checked={props.value}
+            type={props.type}
+            required={props.required}
+            onChange={props.handleCheckbox}
+            key={props.name}
+          />
+        </label>
+      </div>
     );
   }
   return "default";
