@@ -3,21 +3,17 @@ import PetInput from "./petinput";
 import mock from "./mockPetForm.json";
 // import "./petform.css";
 
-// wrapper -> <form> -> <input>
-// <Input type... required... name>
-// [{Label:, type:, required:}]
-
 class PetForm extends Component {
   constructor(props) {
     super(props);
 
-    const inputs = mock.fields.map(el => el.name); // ['Name','Sex']
+    const inputs = mock.fields.map(el => el.name);
     const initialState = {};
     inputs.forEach(el => {
       initialState[el] = "";
     });
     this.state = initialState;
-
+    this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleWriting = this.handleWriting.bind(this);
     this.submit = this.submit.bind(this);
   }
@@ -26,6 +22,15 @@ class PetForm extends Component {
     const { name } = e.target;
     this.setState({
       [name]: e.target.value
+    });
+    console.log(e.target);
+  }
+
+  handleCheckbox(e) {
+    const { name } = e.target;
+    const checked = Boolean(this.state[name]);
+    this.setState({
+      [name]: !checked
     });
   }
 
@@ -40,6 +45,7 @@ class PetForm extends Component {
         {...el}
         value={this.state[el.name]}
         handleWriting={this.handleWriting}
+        handleCheckbox={this.handleCheckbox}
       />
     ));
     return (

@@ -33,6 +33,20 @@ const PetInput = props => {
     ));
     return radios;
   }
+  if (props.type === "checkbox") {
+    return (
+      <label>
+        {props.name}
+        <input
+          name={props.name}
+          checked={props.value}
+          type={props.type}
+          required={props.required}
+          onChange={props.handleCheckbox}
+        />
+      </label>
+    );
+  }
   return "default";
 };
 

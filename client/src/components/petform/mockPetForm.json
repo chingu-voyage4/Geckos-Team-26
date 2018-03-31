@@ -23,6 +23,12 @@
       "type": "text",
       "required": true,
       "values": ""
+    },
+    {
+      "name": "Neutered",
+      "type": "checkbox",
+      "required": false,
+      "values": ""
     }
   ]
 }
