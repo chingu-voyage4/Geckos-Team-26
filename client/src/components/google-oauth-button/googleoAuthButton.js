@@ -32,7 +32,7 @@ const GoogleoAuthButton = props => {
         .then(res => {
           login(res);
           props.updateUser(res.userData);
-          props.updateRedirectOnLogin(true);
+          props.updateIsLoggedIn(true);
         })
         .catch(error => console.log(error));
     } else {

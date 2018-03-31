@@ -20,10 +20,10 @@ class App extends Component {
     super();
     this.state = {
       user: {},
-      redirectOnLogin: false
+      isLoggedIn: false
     };
     this.updateUserInState = this.updateUserInState.bind(this);
-    this.updateRedirectOnLogin = this.updateRedirectOnLogin.bind(this);
+    this.updateIsLoggedIn = this.updateIsLoggedIn.bind(this);
   }
 
   updateUserInState(user) {
@@ -32,9 +32,9 @@ class App extends Component {
     });
   }
 
-  updateRedirectOnLogin(bool) {
+  updateIsLoggedIn(bool) {
     this.setState({
-      redirectOnLogin: bool
+      isLoggedIn: bool
     });
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
         <div className="app">
           <Header
             username={this.state.user.username}
-            redirectOnLogin={this.state.redirectOnLogin}
+            isLoggedIn={this.state.isLoggedIn}
           />
           <Switch>
             <Route path="/" component={Main} exact />
@@ -55,8 +55,8 @@ class App extends Component {
                   username={this.state.user.username}
                   activeItem="login"
                   updateUser={this.updateUserInState}
-                  updateRedirectOnLogin={this.updateRedirectOnLogin}
-                  redirectOnLogin={this.state.redirectOnLogin}
+                  updateIsLoggedIn={this.updateIsLoggedIn}
+                  isLoggedIn={this.state.isLoggedIn}
                   {...props}
                 />
               )}
@@ -68,8 +68,8 @@ class App extends Component {
                   username={this.state.user.username}
                   activeItem="signup"
                   updateUser={this.updateUserInState}
-                  updateRedirectOnLogin={this.updateRedirectOnLogin}
-                  redirectOnLogin={this.state.redirectOnLogin}
+                  updateIsLoggedIn={this.updateIsLoggedIn}
+                  isLoggedIn={this.state.isLoggedIn}
                   {...props}
                 />
               )}
@@ -82,7 +82,7 @@ class App extends Component {
                 <Logout
                   username={this.state.user.username}
                   updateUser={this.updateUserInState}
-                  updateRedirectOnLogin={this.updateRedirectOnLogin}
+                  updateIsLoggedIn={this.updateIsLoggedIn}
                   {...props}
                 />
               )}

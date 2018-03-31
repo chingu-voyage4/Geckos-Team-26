@@ -74,7 +74,7 @@ class UserForm extends Component {
         .then(res => {
           login(res);
           this.props.updateUser(res.userData);
-          this.props.updateRedirectOnLogin(true);
+          this.props.updateIsLoggedIn(true);
         })
         .catch(error => console.log(error));
     } else {
@@ -94,14 +94,14 @@ class UserForm extends Component {
         .then(res => {
           login(res);
           this.props.updateUser(res.userData);
-          this.props.updateRedirectOnLogin(true);
+          this.props.updateIsLoggedIn(true);
         })
         .catch(error => console.log(error));
     }
   }
 
   render() {
-    return this.props.redirectOnLogin ? (
+    return this.props.isLoggedIn ? (
       <Redirect to="/dashboard" />
     ) : (
       <div className="ui middle aligned center aligned grid custom-display-form">
@@ -182,7 +182,7 @@ class UserForm extends Component {
             </div>
             <GoogleLogin
               updateUser={this.props.updateUser}
-              updateRedirectOnLogin={this.props.updateRedirectOnLogin}
+              updateIsLoggedIn={this.props.updateIsLoggedIn}
             />
           </form>
         </div>
