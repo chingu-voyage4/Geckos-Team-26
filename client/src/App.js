@@ -1,4 +1,4 @@
-/* eslint react/prefer-stateless-function: 0 */
+/* eslint react/no-unused-state: 0 */
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -19,14 +19,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: {
-        id: "",
-        username: "",
-        email: "",
-        imgUrl: ""
-      }
+      user: {},
+      redirectOnLogin: false
     };
     this.updateUserInState = this.updateUserInState.bind(this);
+    this.updateRedirectOnLogin = this.updateRedirectOnLogin.bind(this);
   }
 
   updateUserInState(user) {
@@ -35,11 +32,20 @@ class App extends Component {
     });
   }
 
+  updateRedirectOnLogin(bool) {
+    this.setState({
+      redirectOnLogin: bool
+    });
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div className="app">
-          <Header username={this.state.user.username} />
+          <Header
+            username={this.state.user.username}
+            redirectOnLogin={this.state.redirectOnLogin}
+          />
           <Switch>
             <Route path="/" component={Main} exact />
             <Route
@@ -49,6 +55,8 @@ class App extends Component {
                   username={this.state.user.username}
                   activeItem="login"
                   updateUser={this.updateUserInState}
+                  updateRedirectOnLogin={this.updateRedirectOnLogin}
+                  redirectOnLogin={this.state.redirectOnLogin}
                   {...props}
                 />
               )}
@@ -60,6 +68,8 @@ class App extends Component {
                   username={this.state.user.username}
                   activeItem="signup"
                   updateUser={this.updateUserInState}
+                  updateRedirectOnLogin={this.updateRedirectOnLogin}
+                  redirectOnLogin={this.state.redirectOnLogin}
                   {...props}
                 />
               )}
@@ -72,6 +82,7 @@ class App extends Component {
                 <Logout
                   username={this.state.user.username}
                   updateUser={this.updateUserInState}
+                  updateRedirectOnLogin={this.updateRedirectOnLogin}
                   {...props}
                 />
               )}

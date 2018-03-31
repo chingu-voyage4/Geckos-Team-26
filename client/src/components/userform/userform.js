@@ -5,6 +5,7 @@ import FormMenu from "./formmenu";
 import GoogleLogin from "../google-oauth-button/googleoAuthButton";
 import validateSignUp from "../../utils/validateUserInput";
 import postData from "../../utils/postData";
+import login from "../../utils/login";
 import "./userform.css";
 
 class UserForm extends Component {
@@ -71,10 +72,9 @@ class UserForm extends Component {
 
       postData(postRoute, options)
         .then(res => {
-          const jsonResponse = res;
-          this.props.updateUser(jsonResponse.userData);
-          sessionStorage.setItem("token", jsonResponse.token);
-          sessionStorage.setItem("user", JSON.stringify(jsonResponse.userData));
+          login(res);
+          this.props.updateUser(res.userData);
+          this.props.updateRedirectOnLogin(true);
         })
         .catch(error => console.log(error));
     } else {
@@ -92,17 +92,16 @@ class UserForm extends Component {
 
       postData(postRoute, options)
         .then(res => {
-          const jsonResponse = res;
-          this.props.updateUser(jsonResponse.userData);
-          sessionStorage.setItem("token", jsonResponse.token);
-          sessionStorage.setItem("user", JSON.stringify(jsonResponse.userData));
+          login(res);
+          this.props.updateUser(res.userData);
+          this.props.updateRedirectOnLogin(true);
         })
         .catch(error => console.log(error));
     }
   }
 
   render() {
-    return this.props.username ? (
+    return this.props.redirectOnLogin ? (
       <Redirect to="/dashboard" />
     ) : (
       <div className="ui middle aligned center aligned grid custom-display-form">
@@ -181,7 +180,10 @@ class UserForm extends Component {
                 value="Submit"
               />
             </div>
-            <GoogleLogin updateUser={this.props.updateUser} />
+            <GoogleLogin
+              updateUser={this.props.updateUser}
+              updateRedirectOnLogin={this.props.updateRedirectOnLogin}
+            />
           </form>
         </div>
       </div>
