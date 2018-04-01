@@ -40,20 +40,19 @@ class App extends Component {
   }
 
   render() {
+    let username;
+    this.state.user ? (username = this.state.user.username) : (username = "");
     return (
       <BrowserRouter>
         <div className="app">
-          <Header
-            username={this.state.user.username}
-            isLoggedIn={this.state.isLoggedIn}
-          />
+          <Header username={username} isLoggedIn={this.state.isLoggedIn} />
           <Switch>
             <Route path="/" component={Main} exact />
             <Route
               path="/login"
               render={props => (
                 <UserForm
-                  username={this.state.user.username}
+                  username={username}
                   activeItem="login"
                   updateUser={this.updateUserInState}
                   updateIsLoggedIn={this.updateIsLoggedIn}
@@ -66,7 +65,7 @@ class App extends Component {
               path="/signup"
               render={props => (
                 <UserForm
-                  username={this.state.user.username}
+                  username={username}
                   activeItem="signup"
                   updateUser={this.updateUserInState}
                   updateIsLoggedIn={this.updateIsLoggedIn}
@@ -79,7 +78,7 @@ class App extends Component {
               path="/logout"
               render={props => (
                 <Logout
-                  username={this.state.user.username}
+                  username={username}
                   updateUser={this.updateUserInState}
                   updateIsLoggedIn={this.updateIsLoggedIn}
                   {...props}
