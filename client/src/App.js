@@ -41,7 +41,7 @@ class App extends Component {
 
   render() {
     let username;
-    this.state.user ? (username = this.state.user.username) : (username = "");
+    this.state.user ? ({ username } = this.state.user) : (username = "");
     return (
       <BrowserRouter>
         <div className="app">

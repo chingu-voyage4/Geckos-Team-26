@@ -30,9 +30,7 @@ const GoogleoAuthButton = props => {
     if (payload.accessToken) {
       postData(postRoute, options)
         .then(res => {
-          login(res);
-          props.updateUser(res.userData);
-          props.updateIsLoggedIn(true);
+          login(res, props);
         })
         .catch(error => console.log(error));
     } else {

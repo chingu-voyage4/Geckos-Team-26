@@ -72,9 +72,9 @@ class UserForm extends Component {
 
       postData(postRoute, options)
         .then(res => {
-          login(res);
-          this.props.updateUser(res.userData);
-          this.props.updateIsLoggedIn(true);
+          if (res.token) {
+            login(res, this.props);
+          }
         })
         .catch(error => console.log(error));
     } else {
@@ -92,9 +92,9 @@ class UserForm extends Component {
 
       postData(postRoute, options)
         .then(res => {
-          login(res);
-          this.props.updateUser(res.userData);
-          this.props.updateIsLoggedIn(true);
+          if (res.token) {
+            login(res, this.props);
+          }
         })
         .catch(error => console.log(error));
     }
