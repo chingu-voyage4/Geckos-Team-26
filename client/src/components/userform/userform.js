@@ -104,7 +104,7 @@ class UserForm extends Component {
     return this.props.isLoggedIn ? (
       <Redirect to="/dashboard" />
     ) : (
-      <div className="ui middle aligned center aligned grid custom-display-form">
+      <div className="ui middle aligned center aligned grid custom-display-form min-height">
         <div className="column">
           <h2 className="ui black header">
             {this.state.activeItem === "signup" ? "Sign up" : "Log in"}

@@ -1,4 +1,3 @@
 node_modules/
-utils/config.js
-client/src/googleCredentials.js
-dbtest.js
+client/build/
+.env
