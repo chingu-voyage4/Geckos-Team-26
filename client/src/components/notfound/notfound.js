@@ -5,11 +5,11 @@ import dogImage from "./surprised-dog.png";
 import "./notfound.css";
 
 const NotFound = () => (
-  <div className="notfound">
-    <h1 className="ui huge header">WOOPS!</h1>
-    <h3 className="ui large header">We could not find that page.</h3>
+  <div className="notfound min-height">
+    <h1 className="ui huge header">OOPS!</h1>
+    <h3 className="ui large header">I ate the page you're looking for.</h3>
     <Link className="ui header blue" to="/">
-      Do you want to go home?
+      Are we going home now?
     </Link>
     <img src={dogImage} alt="A surprised dog" />
   </div>
