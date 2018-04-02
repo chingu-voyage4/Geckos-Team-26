@@ -32,13 +32,13 @@ const Profile = () => (
               <div className="header">
                 <i className="user icon" /> Username
               </div>
-              <div className="content">Toni</div>
+              <div className="content">{mockData.user}</div>
             </div>
             <div className="item custom-user-spacing">
               <div className="header">
                 <i className="envelope icon" /> Email
               </div>
-              <div className="content">morgan@thedog.com</div>
+              <div className="content">{mockData.email}</div>
             </div>
             <div className="item custom-user-spacing">
               <div className="header">
