@@ -2,9 +2,13 @@
 /* USER FORM STYLES */
 /* ************************************ */
 
+.custom-display-form {
+  margin: 0 0.25em !important;
+}
+
 @media screen and (min-width: 600px) {
   .custom-display-form {
-    margin: 3em auto !important;
+    margin: 0 auto !important;
     width: 600px;
   }
 }

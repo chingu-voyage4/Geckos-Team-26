@@ -1,7 +1,17 @@
 /* ************************************ */
 /* GLOBAL STYLES */
 /* ************************************ */
+html {
+  height: 100%;
+}
 
 body {
   font-family: sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.min-height {
+  min-height: 70vh;
 }
