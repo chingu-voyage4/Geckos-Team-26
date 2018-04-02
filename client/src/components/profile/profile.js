@@ -13,7 +13,7 @@ const Profile = () => (
       Edit profile
     </div>
 
-    <h1 className="profile-header">{mockData.user}'s profile</h1>
+    <h1 className="profile-header">{mockData.user}&apos;s profile</h1>
     <div className="user-grid">
       <div className="ui card centered">
         <div className="image">
