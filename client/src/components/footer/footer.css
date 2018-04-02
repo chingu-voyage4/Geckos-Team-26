@@ -3,6 +3,15 @@
 /* ************************************ */
 
 .custom-footer {
-  margin-top: 3em !important;
-  padding: 3em !important;
+  margin-top: 2em !important;
+  padding: 2em !important;
+  min-height: 100px !important;
+  width: 100%;
+  align-self: flex-end !important;
+}
+
+@supports (display: grid) {
+  .custom-footer {
+    align-self: end !important;
+  }
 }

@@ -7,7 +7,7 @@ import "./dashboard.css";
 const username = "Toni";
 
 const Dashboard = () => (
-  <section className="dashboard">
+  <section className="dashboard min-height">
     <h2>Welcome {username}</h2>
     <div className="pet-list">
       <PetPreview {...mockData.pets[0]} />
