@@ -1,0 +1,15 @@
+.notfound {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: -42px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.ui.huge.header {
+  font-size: 4em;
+}
