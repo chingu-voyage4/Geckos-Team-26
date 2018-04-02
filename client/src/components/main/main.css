@@ -2,6 +2,11 @@
 /* MAIN PAGE GLOBAL STYLES */
 /* ************************************ */
 
+.main {
+  margin-top: -2em;
+  margin-bottom: -2em;
+}
+
 .masthead {
   min-height: 600px;
   border-radius: 0 !important;
@@ -57,8 +62,19 @@
 
 @media screen and (min-width: 600px) {
   .masthead {
-    padding-left: 25vw !important;
     align-items: start;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .masthead {
+    padding-left: 10vw !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .masthead {
+    padding-left: 15vw !important;
   }
 }
 
@@ -98,6 +114,16 @@
   .custom-background-image {
     background-image: url(./my-pet-v1200.jpg) !important;
   }
+
+  .masthead {
+    align-items: center;
+    padding: 0;
+  }
+
+  .custom-display-header {
+    position: absolute;
+    top: 2em;
+  }
 }
 
 @media screen and (orientation: portrait) and (max-width: 600px) {
@@ -135,7 +161,7 @@
       grid-template-areas:
         "ft1 ft1 ft2 ft2"
         "ft3 ft4 ft4 ft5";
-      align-items: start;
+      text-align: center;
     }
     .feature-1 {
       grid-area: ft1;

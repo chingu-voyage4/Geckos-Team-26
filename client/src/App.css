@@ -5,10 +5,12 @@
 .app {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 @supports (display: grid) {
   .app {
     display: grid;
+    grid-template-columns: 1fr;
   }
 }
