@@ -1,10 +1,15 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
+
+require("dotenv").config();
 
 const server = express();
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
+
+server.use(express.static(path.join(__dirname, "client", "build")));
 
 const authRoute = require("./routes/authRoute");
 const oauthRoute = require("./routes/oauthRoute");
