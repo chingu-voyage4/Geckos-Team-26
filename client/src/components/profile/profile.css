@@ -1,0 +1,41 @@
+/* ************************************ */
+/* USER PROFILE STYLES */
+/* ************************************ */
+
+.profile-header {
+  text-align: center;
+}
+
+.user-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em auto;
+}
+
+.user-avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.custom-user-spacing {
+  padding: 0.5em 0 !important;
+}
+
+.custom-user-spacing .content {
+  padding-left: 23px;
+}
+
+@supports (display: grid) {
+  .user-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    align-items: start;
+  }
+
+  @media screen and (max-width: 600px) {
+    .user-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
