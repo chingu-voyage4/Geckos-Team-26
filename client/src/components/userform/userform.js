@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 import FormMenu from "./formmenu";
 import GoogleLogin from "../google-oauth-button/googleoAuthButton";
 import validateSignUp from "../../utils/validateUserInput";
+import postData from "../../utils/postData";
+import login from "../../utils/login";
 import "./userform.css";
 
 class UserForm extends Component {
@@ -51,6 +53,7 @@ class UserForm extends Component {
     const { activeItem, ...data } = this.state;
 
     if (activeItem === "signup") {
+      // When a user submits the signup form
       const isValid = validateSignUp(data);
       if (isValid !== "valid") {
         console.log(isValid);
@@ -65,13 +68,17 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(data)
       };
-      fetch("/auth/signup", options)
-        .then(res => res.json())
-        .then(json => {
-          this.props.updateUser(json.userData);
-          console.log(json.token);
-        });
+      const postRoute = "/auth/signup";
+
+      postData(postRoute, options)
+        .then(res => {
+          if (res.token) {
+            login(res, this.props);
+          }
+        })
+        .catch(error => console.log(error));
     } else {
+      // When a user submits the login form
       const headers = new Headers();
       headers.append("Content-Type", "application/json");
 
@@ -81,17 +88,20 @@ class UserForm extends Component {
         headers,
         body: JSON.stringify(loginData)
       };
-      fetch("/auth/login", options)
-        .then(res => res.json())
-        .then(json => {
-          this.props.updateUser(json.userData);
-          console.log(json.token);
-        });
+      const postRoute = "/auth/login";
+
+      postData(postRoute, options)
+        .then(res => {
+          if (res.token) {
+            login(res, this.props);
+          }
+        })
+        .catch(error => console.log(error));
     }
   }
 
   render() {
-    return this.props.username ? (
+    return this.props.isLoggedIn ? (
       <Redirect to="/dashboard" />
     ) : (
       <div className="ui middle aligned center aligned grid custom-display-form min-height">
@@ -170,7 +180,10 @@ class UserForm extends Component {
                 value="Submit"
               />
             </div>
-            <GoogleLogin />
+            <GoogleLogin
+              updateUser={this.props.updateUser}
+              updateIsLoggedIn={this.props.updateIsLoggedIn}
+            />
           </form>
         </div>
       </div>

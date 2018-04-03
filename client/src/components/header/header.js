@@ -13,7 +13,7 @@ const Header = props => (
         MyPet
       </Link>
     </div>
-    {props.username ? (
+    {props.isLoggedIn ? (
       <PrivateMenu username={props.username} />
     ) : (
       <PublicMenu />
