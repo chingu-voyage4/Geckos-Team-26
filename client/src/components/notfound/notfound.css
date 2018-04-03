@@ -1,0 +1,16 @@
+/* ************************************ */
+/* PAGE NOT FOUND STYLES */
+/* ************************************ */
+
+.notfound {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3em 0 -2em;
+}
+
+.ui.huge.header {
+  font-size: 4em;
+}

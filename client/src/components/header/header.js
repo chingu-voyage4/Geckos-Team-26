@@ -6,14 +6,14 @@ import PrivateMenu from "./privatemenu";
 import "./header.css";
 
 const Header = props => (
-  <header className="ui inverted menu stackable">
+  <header className="ui inverted menu stackable custom-header">
     <div className="header item yellow">
       <Link to="/" className="custom-yellow-header">
         <i className="paw icon custom-hide" />
         MyPet
       </Link>
     </div>
-    {props.username ? (
+    {props.isLoggedIn ? (
       <PrivateMenu username={props.username} />
     ) : (
       <PublicMenu />

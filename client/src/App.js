@@ -1,10 +1,11 @@
-/* eslint react/prefer-stateless-function: 0 */
+/* eslint react/no-unused-state: 0 */
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 
 import Header from "./components/header/header";
+import PrivateRoute from "./components/PrivateRoute";
 import Main from "./components/main/main";
 import Dashboard from "./components/dashboard/dashboard";
 import PetForm from "./components/petform/petform";
@@ -19,14 +20,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: {
-        id: "",
-        username: "",
-        email: "",
-        imgUrl: ""
-      }
+      user: {},
+      isLoggedIn: false
     };
     this.updateUserInState = this.updateUserInState.bind(this);
+    this.updateIsLoggedIn = this.updateIsLoggedIn.bind(this);
   }
 
   updateUserInState(user) {
@@ -35,20 +33,30 @@ class App extends Component {
     });
   }
 
+  updateIsLoggedIn(bool) {
+    this.setState({
+      isLoggedIn: bool
+    });
+  }
+
   render() {
+    let username;
+    this.state.user ? ({ username } = this.state.user) : (username = "");
     return (
       <BrowserRouter>
         <div className="app">
-          <Header username={this.state.user.username} />
+          <Header username={username} isLoggedIn={this.state.isLoggedIn} />
           <Switch>
             <Route path="/" component={Main} exact />
             <Route
               path="/login"
               render={props => (
                 <UserForm
-                  username={this.state.user.username}
+                  username={username}
                   activeItem="login"
                   updateUser={this.updateUserInState}
+                  updateIsLoggedIn={this.updateIsLoggedIn}
+                  isLoggedIn={this.state.isLoggedIn}
                   {...props}
                 />
               )}
@@ -57,27 +65,46 @@ class App extends Component {
               path="/signup"
               render={props => (
                 <UserForm
-                  username={this.state.user.username}
+                  username={username}
                   activeItem="signup"
                   updateUser={this.updateUserInState}
+                  updateIsLoggedIn={this.updateIsLoggedIn}
+                  isLoggedIn={this.state.isLoggedIn}
                   {...props}
                 />
               )}
             />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/profile" component={Profile} />
             <Route
               path="/logout"
               render={props => (
                 <Logout
-                  username={this.state.user.username}
+                  username={username}
                   updateUser={this.updateUserInState}
+                  updateIsLoggedIn={this.updateIsLoggedIn}
                   {...props}
                 />
               )}
             />
-            <Route path="/petform" component={PetForm} />
-            <Route path="/petdetails" component={PetDetails} />
+            <PrivateRoute
+              path="/dashboard"
+              component={Dashboard}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/profile"
+              component={Profile}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/petform"
+              component={PetForm}
+              isLoggedIn={this.state.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/petdetails"
+              component={PetDetails}
+              isLoggedIn={this.state.isLoggedIn}
+            />
             <Route component={NotFound} />
           </Switch>
           <Footer />

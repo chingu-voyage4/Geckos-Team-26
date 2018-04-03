@@ -15,6 +15,7 @@
     "jsx-a11y/click-events-have-key-events": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": "warn",
-    "class-methods-use-this": "warn"
+    "class-methods-use-this": "warn",
+    "no-unused-expressions": ["error", { "allowTernary": true }]
   }
 }
