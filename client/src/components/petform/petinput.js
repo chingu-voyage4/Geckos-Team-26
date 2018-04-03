@@ -1,4 +1,6 @@
 import React from "react";
+import Calendar from "react-input-calendar";
+import "./calendar.css";
 
 const PetInput = props => {
   if (props.type === "text") {
@@ -49,6 +51,17 @@ const PetInput = props => {
           />
         </label>
       </div>
+    );
+  }
+  if (props.type === "date") {
+    return (
+      <Calendar
+        format="DD/MM/YYYY"
+        computableFormat="DD/MM/YYYY"
+        date={props.value}
+        onChange={props.handleDate}
+        name={props.name}
+      />
     );
   }
   return "default";

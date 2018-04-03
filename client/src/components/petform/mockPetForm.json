@@ -29,6 +29,12 @@
       "type": "checkbox",
       "required": false,
       "values": ""
+    },
+    {
+      "name": "Born",
+      "type": "date",
+      "required": false,
+      "values": ""
     }
   ]
 }

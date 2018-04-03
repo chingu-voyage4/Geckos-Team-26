@@ -15,6 +15,7 @@ class PetForm extends Component {
     this.state = initialState;
     this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleWriting = this.handleWriting.bind(this);
+    this.handleDate = this.handleDate.bind(this);
     this.submit = this.submit.bind(this);
   }
 
@@ -33,6 +34,12 @@ class PetForm extends Component {
     });
   }
 
+  handleDate(d) {
+    this.setState({
+      Born: d
+    });
+  }
+
   submit(e) {
     e.preventDefault();
     console.log(this.state);
@@ -46,6 +53,7 @@ class PetForm extends Component {
         value={this.state[el.name]}
         handleWriting={this.handleWriting}
         handleCheckbox={this.handleCheckbox}
+        handleDate={this.handleDate}
       />
     ));
     return (
