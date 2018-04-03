@@ -32,7 +32,7 @@ const PetInput = props => {
         />
       </label>
     ));
-    return <div className="ui radio checkbox">{radios}</div>;
+    return <div className="ui">{radios}</div>;
   }
   if (props.type === "checkbox") {
     return (
