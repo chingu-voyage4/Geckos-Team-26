@@ -55,13 +55,17 @@ const PetInput = props => {
   }
   if (props.type === "date") {
     return (
-      <Calendar
-        format="DD/MM/YYYY"
-        computableFormat="DD/MM/YYYY"
-        date={props.value}
-        onChange={props.handleDate}
-        name={props.name}
-      />
+      <div>
+        <label htmlFor="Born">Date of birth</label>
+        <Calendar
+          inputFieldId="Born"
+          format="DD/MM/YYYY"
+          computableFormat="DD/MM/YYYY"
+          date={props.value}
+          onChange={props.handleDate}
+          name={props.name}
+        />
+      </div>
     );
   }
   return "default";
