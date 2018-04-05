@@ -7,14 +7,26 @@
       "values": ""
     },
     {
-      "name": "Sex",
-      "type": "radio",
-      "required": false,
-      "values": ["Male", "Female"]
+      "name": "Avatar",
+      "type": "text",
+      "required": true,
+      "values": ""
     },
     {
       "name": "Species",
       "type": "text",
+      "required": false,
+      "values": ""
+    },
+    {
+      "name": "Breed",
+      "type": "text",
+      "required": true,
+      "values": ""
+    },
+    {
+      "name": "Born",
+      "type": "date",
       "required": false,
       "values": ""
     },
@@ -25,14 +37,14 @@
       "values": ""
     },
     {
-      "name": "Neutered",
-      "type": "checkbox",
+      "name": "Sex",
+      "type": "radio",
       "required": false,
-      "values": ""
+      "values": ["Male", "Female"]
     },
     {
-      "name": "Born",
-      "type": "date",
+      "name": "Neutered",
+      "type": "checkbox",
       "required": false,
       "values": ""
     }
