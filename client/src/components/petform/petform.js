@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import PetInput from "./petinput";
-import mock from "./mockPetForm.json";
+import petFormFields from "./petForm.json";
 // import "./petform.css";
-
-// wrapper -> <form> -> <input>
-// <Input type... required... name>
-// [{Label:, type:, required:}]
 
 class PetForm extends Component {
   constructor(props) {
     super(props);
 
-    const inputs = mock.fields.map(el => el.name); // ['Name','Sex']
+    const inputs = petFormFields.fields.map(el => el.name);
     const initialState = {};
     inputs.forEach(el => {
       initialState[el] = "";
     });
     this.state = initialState;
-
+    this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleWriting = this.handleWriting.bind(this);
+    this.handleDate = this.handleDate.bind(this);
     this.submit = this.submit.bind(this);
   }
 
@@ -29,17 +26,34 @@ class PetForm extends Component {
     });
   }
 
+  handleCheckbox(e) {
+    const { name } = e.target;
+    const checked = Boolean(this.state[name]);
+    this.setState({
+      [name]: !checked
+    });
+  }
+
+  handleDate(d) {
+    this.setState({
+      Born: d
+    });
+  }
+
   submit(e) {
     e.preventDefault();
     console.log(this.state);
   }
 
   render() {
-    const petInputs = mock.fields.map(el => (
+    const petInputs = petFormFields.fields.map(el => (
       <PetInput
+        key={el.name}
         {...el}
         value={this.state[el.name]}
         handleWriting={this.handleWriting}
+        handleCheckbox={this.handleCheckbox}
+        handleDate={this.handleDate}
       />
     ));
     return (

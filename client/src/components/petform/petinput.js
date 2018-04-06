@@ -1,4 +1,6 @@
 import React from "react";
+import Calendar from "react-input-calendar";
+import "./calendar.css";
 
 const PetInput = props => {
   if (props.type === "text") {
@@ -12,6 +14,7 @@ const PetInput = props => {
             type={props.type}
             required={props.required}
             onChange={props.handleWriting}
+            key={props.name}
           />
         </label>
       </div>
@@ -19,7 +22,7 @@ const PetInput = props => {
   }
   if (props.type === "radio") {
     const radios = props.values.map(el => (
-      <label>
+      <label key={el}>
         {el}
         <input
           name={props.name}
@@ -31,7 +34,39 @@ const PetInput = props => {
         />
       </label>
     ));
-    return radios;
+    return <div className="ui">{radios}</div>;
+  }
+  if (props.type === "checkbox") {
+    return (
+      <div>
+        <label>
+          {props.name}
+          <input
+            name={props.name}
+            checked={props.value}
+            type={props.type}
+            required={props.required}
+            onChange={props.handleCheckbox}
+            key={props.name}
+          />
+        </label>
+      </div>
+    );
+  }
+  if (props.type === "date") {
+    return (
+      <div>
+        <label htmlFor="Born">Date of birth</label>
+        <Calendar
+          inputFieldId="Born"
+          format="DD/MM/YYYY"
+          computableFormat="DD/MM/YYYY"
+          date={props.value}
+          onChange={props.handleDate}
+          name={props.name}
+        />
+      </div>
+    );
   }
   return "default";
 };
