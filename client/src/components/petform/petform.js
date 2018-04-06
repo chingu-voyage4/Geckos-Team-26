@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PetInput from "./petinput";
-import mock from "./mockPetForm.json";
+import mock from "./petForm.json";
 // import "./petform.css";
 
 class PetForm extends Component {
