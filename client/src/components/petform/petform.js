@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import PetInput from "./petinput";
-import mock from "./petForm.json";
+import petFormFields from "./petForm.json";
 // import "./petform.css";
 
 class PetForm extends Component {
   constructor(props) {
     super(props);
 
-    const inputs = mock.fields.map(el => el.name);
+    const inputs = petFormFields.fields.map(el => el.name);
     const initialState = {};
     inputs.forEach(el => {
       initialState[el] = "";
@@ -46,7 +46,7 @@ class PetForm extends Component {
   }
 
   render() {
-    const petInputs = mock.fields.map(el => (
+    const petInputs = petFormFields.fields.map(el => (
       <PetInput
         key={el.name}
         {...el}
