@@ -9,7 +9,7 @@
     {
       "name": "Avatar",
       "type": "text",
-      "required": true,
+      "required": false,
       "values": ""
     },
     {
