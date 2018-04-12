@@ -13,6 +13,8 @@ const SaveUserToDB = user => {
   if (user.password) {
     newUser.password = user.password;
   }
+  // TODO - we aren't adding a user image during signup
+  // Can this be moved elsewhere? Or should we just delete it?
   if (user.imgUrl) {
     newUser.imgUrl = user.imgUrl;
   }

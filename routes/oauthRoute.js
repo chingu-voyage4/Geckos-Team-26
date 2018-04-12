@@ -25,7 +25,7 @@ router.post("/google", (req, res) => {
       if (JSON.parse(body.toString()).exp < Date.now()) {
         GetUserFromDB(data.user)
           .then(user => {
-            const token = createToken(user.email, jwtSecret);
+            const token = createToken(user._id, user.email, jwtSecret);
             const userData = createUserData(user);
             return res.json({ token, userData });
           })
@@ -35,7 +35,7 @@ router.post("/google", (req, res) => {
 
               SaveUserToDB(data.user)
                 .then(user => {
-                  const token = createToken(user.email, jwtSecret);
+                  const token = createToken(user._id, user.email, jwtSecret);
                   const userData = createUserData(user);
                   return res.json({ token, userData });
                 })
