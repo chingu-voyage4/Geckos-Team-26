@@ -2,8 +2,9 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   try {
-    const decoded = jwt.verify(req.body.token, process.env.JWTSECRET);
-    req.userData = decoded;
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWTSECRET);
+    req.userDec = decoded;
     next();
   } catch (error) {
     return res.status(401).json({
