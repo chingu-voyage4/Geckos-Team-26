@@ -40,19 +40,19 @@ class App extends Component {
   }
 
   render() {
-    let username;
-    this.state.user ? ({ username } = this.state.user) : (username = "");
+    let user;
+    this.state.user ? ({ user } = this.state) : (user = {});
     return (
       <BrowserRouter>
         <div className="app">
-          <Header username={username} isLoggedIn={this.state.isLoggedIn} />
+          <Header username={user.username} isLoggedIn={this.state.isLoggedIn} />
           <Switch>
             <Route path="/" component={Main} exact />
             <Route
               path="/login"
               render={props => (
                 <UserForm
-                  username={username}
+                  username={user.username}
                   activeItem="login"
                   updateUser={this.updateUserInState}
                   updateIsLoggedIn={this.updateIsLoggedIn}
@@ -65,7 +65,7 @@ class App extends Component {
               path="/signup"
               render={props => (
                 <UserForm
-                  username={username}
+                  username={user.username}
                   activeItem="signup"
                   updateUser={this.updateUserInState}
                   updateIsLoggedIn={this.updateIsLoggedIn}
@@ -78,7 +78,7 @@ class App extends Component {
               path="/logout"
               render={props => (
                 <Logout
-                  username={username}
+                  username={user.username}
                   updateUser={this.updateUserInState}
                   updateIsLoggedIn={this.updateIsLoggedIn}
                   {...props}
@@ -89,6 +89,7 @@ class App extends Component {
               path="/dashboard"
               component={Dashboard}
               isLoggedIn={this.state.isLoggedIn}
+              user={user}
             />
             <PrivateRoute
               path="/profile"

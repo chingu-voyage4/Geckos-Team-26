@@ -54,8 +54,10 @@ const getAllPetsForUser = ownerId => {
       })
       .catch(err => {
         mongoose.disconnect();
-        res.status(500).json({
-          error: err
+        return resolve(res => {
+          res.status(500).json({
+            error: err
+          });
         });
       });
   });

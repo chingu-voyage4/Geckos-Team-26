@@ -1,15 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./dashboard.css";
 
 const PetPreview = props => (
-  <div className="pet-preview">
-    <img
-      className="ui small circular image"
-      src={props.petAvatar}
-      alt="Pet avatar"
-    />
-    <p className="ui small header">{props.petName}</p>
-  </div>
+  <Link to="/petdetails">
+    <li className="pet-preview">
+      <img
+        className="ui small circular image"
+        src={props.pet.petAvatar}
+        alt="Pet avatar"
+      />
+      <p className="ui small header">{props.pet.petName}</p>
+    </li>
+  </Link>
 );
 
 export default PetPreview;
