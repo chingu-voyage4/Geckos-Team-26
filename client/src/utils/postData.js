@@ -1,13 +1,13 @@
-const postData = (postRoute, options) =>
-  new Promise((resolve, reject) => {
-    fetch(postRoute, options)
-      .then(res => res.json())
-      .then(json => {
-        resolve(json);
-      })
-      .catch(error => {
-        reject(error);
-      });
+function handleResponse(response) {
+  return response.json().then(json => {
+    if (response.ok) {
+      return json;
+    }
+    return Promise.reject(json);
   });
+}
+
+const postData = (postRoute, options) =>
+  fetch(postRoute, options).then(handleResponse);
 
 export default postData;
