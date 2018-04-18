@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PetInput from "./petinput";
 import petFormFields from "./petForm.json";
+import mapKeysToPetSchema from "../../utils/mapKeysToPetSchema";
+
 // import "./petform.css";
 
 class PetForm extends Component {
@@ -42,7 +44,15 @@ class PetForm extends Component {
 
   submit(e) {
     e.preventDefault();
-    console.log(this.state);
+
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    const options = {
+      method: "POST",
+      headers,
+      body: JSON.stringify(mapKeysToPetSchema(this.state))
+    };
   }
 
   render() {

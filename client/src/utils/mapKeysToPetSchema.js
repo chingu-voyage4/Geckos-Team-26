@@ -11,7 +11,7 @@ const mapKeysToPetSchema = object => {
   };
   let newObj = {};
 
-  for (key of Object.keys(object)) {
+  for (let key of Object.keys(object)) {
     newObj[schemaNames[key]] = object[key];
   }
   return newObj;
