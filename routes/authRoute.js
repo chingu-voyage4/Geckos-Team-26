@@ -24,7 +24,7 @@ router.post("/signup", (req, res) => {
 
         SaveUserToDB(validNewUser)
           .then(user => {
-            const token = createToken(user.email, jwtSecret);
+            const token = createToken(user._id, user.email, jwtSecret);
             const userData = createUserData(user);
             return res.json({ token, userData });
           })
@@ -48,7 +48,7 @@ router.post("/login", (req, res) => {
         if (!result) {
           return res.status(400).json({ message: "Incorrect password" });
         }
-        const token = createToken(user.email, jwtSecret);
+        const token = createToken(user._id, user.email, jwtSecret);
         const userData = createUserData(user);
         return res.json({ token, userData });
       });

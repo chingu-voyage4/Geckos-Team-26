@@ -14,11 +14,13 @@ server.use(express.static(path.join(__dirname, "client", "build")));
 const authRoute = require("./routes/authRoute");
 const oauthRoute = require("./routes/oauthRoute");
 const logoutRoute = require("./routes/logoutRoute");
+const petRoute = require("./routes/petRoute");
 const clientRoute = require("./routes/clientRoute");
 
 server.use("/auth", authRoute);
 server.use("/oauth", oauthRoute);
 server.use("/logout", logoutRoute);
+server.use("/pets", petRoute);
 server.use("*", clientRoute);
 
 const PORT = process.env.PORT || 5000;

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import FormMenu from "./formmenu";
-import GoogleLogin from "../google-oauth-button/googleoAuthButton";
+import GoogleLogin from "./googleoAuthButton";
 import validateSignUp from "../../utils/validateUserInput";
 import postData from "../../utils/postData";
 import login from "../../utils/login";

@@ -8,7 +8,6 @@ const hashPassword = pass =>
       if (err) {
         return reject(new Error({ message: "Failed to hash password" }));
       }
-
       return resolve(hash);
     });
   });
