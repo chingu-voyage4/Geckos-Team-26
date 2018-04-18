@@ -9,9 +9,9 @@ const mapKeysToPetSchema = object => {
     Sex: "sex",
     Neutered: "neutered"
   };
-  let newObj = {};
+  const newObj = {};
 
-  for (let key of Object.keys(object)) {
+  for (const key of Object.keys(object)) {
     newObj[schemaNames[key]] = object[key];
   }
   return newObj;
