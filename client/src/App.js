@@ -100,6 +100,7 @@ class App extends Component {
               path="/petform"
               component={PetForm}
               isLoggedIn={this.state.isLoggedIn}
+              userId={user.id}
             />
             <PrivateRoute
               path="/petdetails"
