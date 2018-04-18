@@ -49,7 +49,7 @@ class PetForm extends Component {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    let payload = mapKeysToPetSchema(this.state);
+    const payload = mapKeysToPetSchema(this.state);
     payload.owner = this.props.userId;
 
     const options = {
