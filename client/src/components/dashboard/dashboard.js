@@ -32,17 +32,24 @@ class Dashboard extends Component {
           this.setState({ redirect: true });
           throw new Error("User not authorised");
         }
+        // console.log(response.json());
         return response.json();
       })
       .then(parsedJSON =>
         parsedJSON.pets.map(pet => ({
           id: `${pet._id}`,
           petName: `${pet.petName}`,
-          petAvatar: `${pet.petAvatar}`
+          petAvatar: `${pet.petAvatar}`,
+          species: `${pet.species}`,
+          breed: `${pet.breed}`,
+          dob: `${pet.dob}`,
+          description: `${pet.description}`,
+          sex: `${pet.sex}`,
+          neutered: `${pet.neutered}`
         }))
       )
       .then(petList => {
-        // console.log(petList);
+        console.log(petList);
         this.setState({
           petList
         });
