@@ -63,8 +63,42 @@ const getAllPetsForUser = ownerId => {
   });
 };
 
+const SavePetToDB = pet => {
+  mongoose.connect(dbUrl);
+
+  const newPet = new PetModel({
+    petName: pet.petName,
+    owner: pet.owner,
+    petAvatar: pet.petAvatar,
+    species: pet.species,
+    breed: pet.breed,
+    dob: pet.dob,
+    description: pet.description,
+    sex: pet.sex,
+    neutered: pet.neutered
+  });
+
+  return new Promise((resolve, reject) => {
+    newPet
+      .save()
+      .then(response => {
+        mongoose.disconnect();
+        return resolve(response);
+        /* GetUserFromDB(pet).then(pet => {
+          mongoose.disconnect();
+          return resolve(pet);
+        }); */
+      })
+      .catch(() => {
+        mongoose.disconnect();
+        return reject(new Error("Could not create new pet"));
+      });
+  });
+};
+
 module.exports = {
   createToken,
   createUserData,
-  getAllPetsForUser
+  getAllPetsForUser,
+  SavePetToDB
 };
