@@ -50,7 +50,7 @@ class PetForm extends Component {
     headers.append("Content-Type", "application/json");
 
     const payload = mapKeysToPetSchema(this.state);
-    payload.owner = this.props.userId;
+    payload.owner = this.props.user.id;
 
     const options = {
       method: "POST",
