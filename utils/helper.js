@@ -29,8 +29,7 @@ const getAllPetsForUser = ownerId => {
   mongoose.connect(dbUrl);
 
   return new Promise((resolve, reject) => {
-    PetModel.find({ owner: ownerId }, "petName petAvatar")
-      .select("_id petName petAvatar")
+    PetModel.find({ owner: ownerId })
       .exec()
       .then(docs => {
         mongoose.disconnect();
@@ -43,10 +42,12 @@ const getAllPetsForUser = ownerId => {
                 _id: doc._id,
                 petName: doc.petName,
                 petAvatar: doc.petAvatar,
-                request: {
-                  type: "GET",
-                  url: "http://localhost:3005/pets/pet/" + doc._id
-                }
+                species: doc.species,
+                breed: doc.breed,
+                dob: doc.dob,
+                description: doc.description,
+                sex: doc.sex,
+                neutered: doc.neutered
               };
             })
           })
@@ -84,10 +85,6 @@ const SavePetToDB = pet => {
       .then(response => {
         mongoose.disconnect();
         return resolve(response);
-        /* GetUserFromDB(pet).then(pet => {
-          mongoose.disconnect();
-          return resolve(pet);
-        }); */
       })
       .catch(() => {
         mongoose.disconnect();
