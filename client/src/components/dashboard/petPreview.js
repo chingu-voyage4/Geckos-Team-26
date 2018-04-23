@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import "./dashboard.css";
 
 const PetPreview = props => (
-  <Link to="/petdetails">
+  <Link
+    to={{
+      pathname: "/petdetails",
+      pet: props.pet
+    }}
+  >
     <li className="pet-preview">
       <img
         className="ui small circular image"
