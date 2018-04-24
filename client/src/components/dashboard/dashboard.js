@@ -37,15 +37,15 @@ class Dashboard extends Component {
       })
       .then(parsedJSON =>
         parsedJSON.pets.map(pet => ({
-          id: `${pet._id}`,
-          petName: `${pet.petName}`,
-          petAvatar: `${pet.petAvatar}`,
-          species: `${pet.species}`,
-          breed: `${pet.breed}`,
-          dob: `${pet.dob}`,
-          description: `${pet.description}`,
-          sex: `${pet.sex}`,
-          neutered: `${pet.neutered}`
+          id: pet._id,
+          petName: pet.petName,
+          petAvatar: pet.petAvatar,
+          species: pet.species,
+          breed: pet.breed,
+          dob: pet.dob,
+          description: pet.description,
+          sex: pet.sex,
+          neutered: pet.neutered
         }))
       )
       .then(petList => {
