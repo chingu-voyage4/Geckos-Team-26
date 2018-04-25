@@ -15,31 +15,42 @@ class PetForm extends Component {
     inputs.forEach(el => {
       initialState[el] = "";
     });
-    this.state = initialState;
+    this.state = { pet: initialState };
     this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleWriting = this.handleWriting.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.submit = this.submit.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.location.pet) {
+      // const {pet} = this.props.location
+      // console.log(pet)
+      const pet = { Species: "orangutan" };
+      this.setState({
+        pet: { ...this.state.pet, ...pet }
+      });
+    }
+  }
+
   handleWriting(e) {
     const { name } = e.target;
     this.setState({
-      [name]: e.target.value
+      pet: { ...this.state.pet, [name]: e.target.value }
     });
   }
 
   handleCheckbox(e) {
     const { name } = e.target;
-    const checked = Boolean(this.state[name]);
+    const checked = Boolean(this.state.pet[name]);
     this.setState({
-      [name]: !checked
+      pet: { ...this.state.pet, [name]: !checked }
     });
   }
 
   handleDate(d) {
     this.setState({
-      Born: d
+      pet: { ...this.state.pet, Born: d }
     });
   }
 
@@ -68,7 +79,7 @@ class PetForm extends Component {
       <PetInput
         key={el.name}
         {...el}
-        value={this.state[el.name]}
+        value={this.state.pet[el.name]}
         handleWriting={this.handleWriting}
         handleCheckbox={this.handleCheckbox}
         handleDate={this.handleDate}
