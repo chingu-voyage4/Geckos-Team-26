@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PetInput from "./petinput";
 import petFormFields from "./petForm.json";
 import mapKeysToPetSchema from "../../utils/mapKeysToPetSchema";
+import mapPetSchemaToKeys from "../../utils/mapPetSchemaToKeys";
+import formatDate from "../../utils/formatDate";
 import postData from "../../utils/postData";
 
 // import "./petform.css";
@@ -24,9 +26,8 @@ class PetForm extends Component {
 
   componentDidMount() {
     if (this.props.location.pet) {
-      // const {pet} = this.props.location
-      // console.log(pet)
-      const pet = { Species: "orangutan" };
+      const pet = mapPetSchemaToKeys(this.props.location.pet);
+      pet["Born"] = formatDate(pet["Born"]); //format date from ISO to dd/mm/yyyy
       this.setState({
         pet: { ...this.state.pet, ...pet }
       });
