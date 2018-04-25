@@ -17,7 +17,7 @@ class PetForm extends Component {
     inputs.forEach(el => {
       initialState[el] = "";
     });
-    this.state = { pet: initialState };
+    this.state = { pet: initialState, mode: "create" };
     this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleWriting = this.handleWriting.bind(this);
     this.handleDate = this.handleDate.bind(this);
@@ -27,9 +27,10 @@ class PetForm extends Component {
   componentDidMount() {
     if (this.props.location.pet) {
       const pet = mapPetSchemaToKeys(this.props.location.pet);
-      pet["Born"] = formatDate(pet["Born"]); //format date from ISO to dd/mm/yyyy
+      pet.Born = formatDate(pet.Born); // format date from ISO to dd/mm/yyyy
       this.setState({
-        pet: { ...this.state.pet, ...pet }
+        pet: { ...this.state.pet, ...pet },
+        mode: "edit"
       });
     }
   }
@@ -61,11 +62,11 @@ class PetForm extends Component {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    const payload = mapKeysToPetSchema(this.state);
+    const payload = mapKeysToPetSchema(this.state.pet);
     payload.owner = this.props.user.id;
 
     const options = {
-      method: "POST",
+      method: this.state.mode === "create" ? "POST" : "PATCH",
       headers,
       body: JSON.stringify(payload)
     };
@@ -89,6 +90,11 @@ class PetForm extends Component {
     return (
       <div className="ui middle aligned center aligned grid custom-display-form">
         <div className="column">
+          <h2>
+            {this.state.mode === "create"
+              ? "You're now creating a new pet!"
+              : "You're now editing your pet!"}
+          </h2>
           <form onSubmit={this.submit} className="ui large form" id="petForm">
             <div className="ui stacked segment">{petInputs}</div>
             <input
