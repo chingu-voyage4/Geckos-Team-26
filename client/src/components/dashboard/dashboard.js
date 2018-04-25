@@ -49,7 +49,6 @@ class Dashboard extends Component {
         }))
       )
       .then(petList => {
-        console.log(petList);
         this.setState({
           petList
         });
