@@ -13,7 +13,12 @@ const PetDetails = props => {
   return (
     <div className="ui container">
       <div className="ui basic segment right aligned">
-        <Link to="/petform">
+        <Link
+          to={{
+            pathname: "/petform",
+            pet
+          }}
+        >
           <img
             src={pet.petAvatar}
             alt="Pet Avatar"

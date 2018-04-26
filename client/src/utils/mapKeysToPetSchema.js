@@ -1,6 +1,7 @@
 /* eslint-disable */
 const mapKeysToPetSchema = object => {
   const schemaNames = {
+    id: "id",
     Name: "petName",
     Avatar: "petAvatar",
     Species: "species",
