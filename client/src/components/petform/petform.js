@@ -66,12 +66,15 @@ class PetForm extends Component {
     payload.owner = this.props.user.id;
 
     const options = {
-      method: this.state.mode === "create" ? "POST" : "PATCH",
+      method: this.state.mode === "create" ? "POST" : "PUT",
       headers,
       body: JSON.stringify(payload)
     };
 
-    const postRoute = "/pets/pet";
+    const postRoute =
+      this.state.mode === "create"
+        ? "/pets/pet"
+        : `/pets/pet/${this.state.pet.id}`;
 
     postData(postRoute, options).then(res => console.log(res));
   }
