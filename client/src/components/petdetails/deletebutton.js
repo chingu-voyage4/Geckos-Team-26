@@ -4,7 +4,7 @@ import postData from "../../utils/postData";
 class DeleteButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: true };
+    this.state = { visible: false };
     this.deletePet = this.deletePet.bind(this);
     this.toggleConfirm = this.toggleConfirm.bind(this);
   }
