@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const checkAuth = require("../middleware/check-auth");
+const { dbUrl } = require("../utils/config");
 
 const { getAllPetsForUser, SavePetToDB } = require("../utils/helper");
-const Pet = require("../models/Pet");
+const PetModel = require("../models/Pet");
 
 // List the pets for a particular owner
 router.get("/:userId", checkAuth, (req, res) => {
@@ -16,7 +17,7 @@ router.get("/:userId", checkAuth, (req, res) => {
 
 // Save new pet to DB
 router.post("/pet", (req, res) => {
-  const pet = new Pet({
+  const pet = new PetModel({
     petName: req.body.petName,
     owner: req.body.owner,
     petAvatar: req.body.petAvatar,
@@ -29,6 +30,26 @@ router.post("/pet", (req, res) => {
   });
   SavePetToDB(pet).then(pet => {
     return res.json(pet);
+  });
+});
+
+// Update pet in DB
+router.put("/pet/:petID", (req, res) => {
+  const petID = req.params.petID;
+
+  mongoose.connect(dbUrl);
+
+  PetModel.findById(petID, (err, pet) => {
+    if (!err) {
+      for (let property in req.body) {
+        pet[property] = req.body[property];
+      }
+      pet.save();
+    } else {
+      console.log(err);
+    }
+    mongoose.disconnect();
+    res.json(pet);
   });
 });
 
