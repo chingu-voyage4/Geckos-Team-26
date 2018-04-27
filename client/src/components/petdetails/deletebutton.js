@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import postData from "../../utils/postData";
 
 class deleteButton extends Component {
   constructor(props) {
@@ -10,11 +11,17 @@ class deleteButton extends Component {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
+    const payload = this.props.id;
     const options = {
       method: "DELETE",
-      headers
+      headers,
+      body: JSON.stringify(payload)
     };
 
-    fetch();
+    const postRoute = "/pets/pet";
+
+    postData(postRoute, options).then(res => console.log(res));
   }
 }
+
+export default deleteButton;
