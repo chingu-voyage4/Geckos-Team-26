@@ -4,6 +4,7 @@ import formatDate from "../../utils/formatDate";
 import mockData from "./mockPetData.json";
 import VaccinationCard from "./vaccinationCard";
 import MedicationCard from "./medicationCard";
+import DeleteButton from "./deletebutton";
 import "./petdetails.css";
 
 const vaccinationRecords = mockData.healthRecord.vaccination;
@@ -27,6 +28,7 @@ const PetDetails = props => {
           />
           Edit {pet.petName}
         </Link>
+        <DeleteButton />
       </div>
 
       <div className="pet-details-grid">

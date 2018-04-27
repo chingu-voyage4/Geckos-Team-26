@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import postData from "../../utils/postData";
 
-class deleteButton extends Component {
+class DeleteButton extends Component {
   constructor(props) {
     super(props);
+    this.state = { visible: true };
     this.deletePet = this.deletePet.bind(this);
+    this.toggleConfirm = this.toggleConfirm.bind(this);
   }
 
   deletePet() {
@@ -22,6 +24,23 @@ class deleteButton extends Component {
 
     postData(postRoute, options).then(res => console.log(res));
   }
+
+  toggleConfirm() {
+    this.setState({
+      visible: !this.state.visible
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.toggleConfirm}>Delete</button>
+        {this.state.visible ? (
+          <button onClick={this.deletePet}>Confirm</button>
+        ) : null}
+      </div>
+    );
+  }
 }
 
-export default deleteButton;
+export default DeleteButton;
