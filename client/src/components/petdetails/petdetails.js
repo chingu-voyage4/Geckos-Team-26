@@ -28,7 +28,7 @@ const PetDetails = props => {
           />
           Edit {pet.petName}
         </Link>
-        <DeleteButton />
+        <DeleteButton petId={pet.id} />
       </div>
 
       <div className="pet-details-grid">

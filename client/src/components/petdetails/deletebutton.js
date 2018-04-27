@@ -13,7 +13,7 @@ class DeleteButton extends Component {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    const payload = this.props.id;
+    const payload = this.props.petId;
     const options = {
       method: "DELETE",
       headers,
