@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import postData from "../../utils/postData";
+import { Redirect } from "react-router-dom";
 
 class DeleteButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false };
+    this.state = {
+      visible: false,
+      redirect: false
+    };
     this.deletePet = this.deletePet.bind(this);
     this.toggleConfirm = this.toggleConfirm.bind(this);
   }
@@ -13,7 +16,10 @@ class DeleteButton extends Component {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    const payload = this.props.petId;
+    const payload = {
+      id: this.props.petId
+    };
+    
     const options = {
       method: "DELETE",
       headers,
@@ -22,7 +28,11 @@ class DeleteButton extends Component {
 
     const postRoute = "/pets/pet";
 
-    postData(postRoute, options).then(res => console.log(res));
+    fetch(postRoute, options).then(response => {
+      if (response.status === 200) {
+        this.setState({ redirect: true });
+      }
+    });
   }
 
   toggleConfirm() {
@@ -32,6 +42,10 @@ class DeleteButton extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <div>
         <button onClick={this.toggleConfirm}>Delete</button>

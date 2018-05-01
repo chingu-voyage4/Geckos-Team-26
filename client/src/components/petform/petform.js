@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import PetInput from "./petinput";
 import petFormFields from "./petForm.json";
 import mapKeysToPetSchema from "../../utils/mapKeysToPetSchema";
@@ -17,7 +18,11 @@ class PetForm extends Component {
     inputs.forEach(el => {
       initialState[el] = "";
     });
-    this.state = { pet: initialState, mode: "create" };
+    this.state = {
+      pet: initialState,
+      mode: "create",
+      redirect: false
+    };
     this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleWriting = this.handleWriting.bind(this);
     this.handleDate = this.handleDate.bind(this);
@@ -76,10 +81,21 @@ class PetForm extends Component {
         ? "/pets/pet"
         : `/pets/pet/${this.state.pet.id}`;
 
-    postData(postRoute, options).then(res => console.log(res));
+    postData(postRoute, options).then(res => {
+      if (res) {
+        // console.log("created a pet ", res);
+        this.setState({ redirect: true });
+      }
+    });
   }
 
   render() {
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/dashboard" />;
+    }
+
     const petInputs = petFormFields.fields.map(el => (
       <PetInput
         key={el.name}
@@ -90,6 +106,7 @@ class PetForm extends Component {
         handleDate={this.handleDate}
       />
     ));
+
     return (
       <div className="ui middle aligned center aligned grid custom-display-form">
         <div className="column">
