@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import formatDate from "../../utils/formatDate";
 import mockData from "./mockPetData.json";
 import VaccinationCard from "./vaccinationCard";
 import MedicationCard from "./medicationCard";
+import DeleteButton from "./deletebutton";
 import "./petdetails.css";
 
 const vaccinationRecords = mockData.healthRecord.vaccination;
@@ -26,6 +28,7 @@ const PetDetails = props => {
           />
           Edit {pet.petName}
         </Link>
+        <DeleteButton petId={pet.id} />
       </div>
 
       <div className="pet-details-grid">
@@ -50,7 +53,7 @@ const PetDetails = props => {
             </div>
           </div>
           <div className="extra content">
-            <span className="right floated">Birth: {pet.dob}</span>
+            <span className="right floated">Birth: {formatDate(pet.dob)}</span>
             <span>
               <i className="paw icon" />
               {pet.neutered && <span>Neutered</span>}
