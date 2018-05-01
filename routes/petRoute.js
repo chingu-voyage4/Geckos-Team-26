@@ -10,8 +10,8 @@ const PetModel = require("../models/Pet");
 // List the pets for a particular owner
 router.get("/:userId", checkAuth, (req, res) => {
   const id = req.params.userId;
-  getAllPetsForUser(id).then(response => {
-    res.status(200).json(response);
+  getAllPetsForUser(id).then(data => {
+    return res.status(200).json(data);
   });
 });
 
@@ -50,6 +50,21 @@ router.put("/pet/:petID", (req, res) => {
     }
     mongoose.disconnect();
     res.json(pet);
+  });
+});
+
+// Delete pet from DB
+router.delete("/pet", (req, res) => {
+  const petId = req.body.id;
+
+  mongoose.connect(dbUrl);
+
+  PetModel.findByIdAndRemove(petId, (err, deletedDoc) => {
+    mongoose.disconnect();
+    if (err) {
+      throw err;
+    }
+    return res.status(200).json(deletedDoc);
   });
 });
 
