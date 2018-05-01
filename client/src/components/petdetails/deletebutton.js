@@ -19,6 +19,7 @@ class DeleteButton extends Component {
     const payload = {
       id: this.props.petId
     };
+    
     const options = {
       method: "DELETE",
       headers,
