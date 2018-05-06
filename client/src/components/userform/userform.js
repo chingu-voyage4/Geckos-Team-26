@@ -31,7 +31,6 @@ class UserForm extends Component {
   }
 
   handleLoginClick() {
-    console.log("handleLoginClick");
     let { activeItem } = this.state;
     if (activeItem === "signup") {
       activeItem = "login";
@@ -42,7 +41,6 @@ class UserForm extends Component {
   }
 
   handleSignupClick() {
-    console.log("handleSignupClick");
     let { activeItem } = this.state;
     if (activeItem === "login") {
       activeItem = "signup";
