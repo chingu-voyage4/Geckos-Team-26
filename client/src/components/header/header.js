@@ -16,7 +16,10 @@ const Header = props => (
     {props.isLoggedIn ? (
       <PrivateMenu username={props.username} />
     ) : (
-      <PublicMenu />
+      <PublicMenu
+        updateActiveItem={props.updateActiveItem}
+        activeItem={props.activeItem}
+      />
     )}
   </header>
 );

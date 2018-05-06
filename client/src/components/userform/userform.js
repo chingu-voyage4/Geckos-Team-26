@@ -20,7 +20,8 @@ class UserForm extends Component {
     };
     this.handleWriting = this.handleWriting.bind(this);
     this.submit = this.submit.bind(this);
-    this.toggleForm = this.toggleForm.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleSignupClick = this.handleSignupClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,11 +30,19 @@ class UserForm extends Component {
     });
   }
 
-  toggleForm() {
+  handleLoginClick() {
     let { activeItem } = this.state;
     if (activeItem === "signup") {
       activeItem = "login";
-    } else {
+    }
+    this.setState({
+      activeItem
+    });
+  }
+
+  handleSignupClick() {
+    let { activeItem } = this.state;
+    if (activeItem === "login") {
       activeItem = "signup";
     }
     this.setState({
@@ -110,7 +119,8 @@ class UserForm extends Component {
             {this.state.activeItem === "signup" ? "Sign up" : "Log in"}
           </h2>
           <FormMenu
-            toggler={this.toggleForm}
+            handleLoginClick={this.handleLoginClick}
+            handleSignupClick={this.handleSignupClick}
             activeItem={this.state.activeItem}
           />
           <form onSubmit={this.submit} className="ui large form" id="userForm">
