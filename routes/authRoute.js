@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const jwt = require("jsonwebtoken");
 const { checkNewUserInput } = require("../utils/validateUserInput");
 const { hashPassword, compareHashes } = require("../utils/hashing");
 const { SaveUserToDB, GetUserFromDB } = require("../utils/mongo");
@@ -42,6 +43,8 @@ router.post("/login", (req, res) => {
     password: req.body.password
   };
 
+  console.log(userInput);
+
   GetUserFromDB(userInput)
     .then(user => {
       compareHashes(userInput.password, user.password).then(result => {
@@ -54,6 +57,26 @@ router.post("/login", (req, res) => {
       });
     })
     .catch(err => res.status(400).json({ message: err.message }));
+});
+
+router.post("/auth", (req, res) => {
+  const token = req.body.token;
+  jwt.verify(token, jwtSecret, (err, decoded) => {
+    const id = decoded.id;
+    const email = decoded.email;
+    const userInput = {
+      email: email,
+      id: id
+    };
+    // console.log(userInput);
+    GetUserFromDB(userInput).then(user => {
+      // console.log("user: ", user);
+      // refresh token
+      const token = createToken(user._id, user.email, jwtSecret);
+      const userData = createUserData(user);
+      return res.json({ token, userData });
+    });
+  });
 });
 
 module.exports = router;

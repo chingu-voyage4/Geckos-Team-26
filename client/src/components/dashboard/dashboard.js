@@ -15,7 +15,13 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.fetchData(this.props.user.id, this.props.user.token);
+    if (this.props.user.id) {
+      this.fetchData(this.props.user.id, this.props.user.token);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.fetchData(nextProps.user.id, nextProps.user.token);
   }
 
   fetchData(userId, token) {

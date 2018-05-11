@@ -16,6 +16,9 @@ import Footer from "./components/footer/footer";
 import Logout from "./components/logout/logout";
 import NotFound from "./components/notfound/notfound";
 
+import AuthService from "./utils/AuthService";
+import login from "./utils/login";
+
 class App extends Component {
   constructor() {
     super();
@@ -25,17 +28,74 @@ class App extends Component {
     };
     this.updateUserInState = this.updateUserInState.bind(this);
     this.updateIsLoggedIn = this.updateIsLoggedIn.bind(this);
+    this.getUserData = this.getUserData.bind(this);
+    this.Auth = new AuthService();
   }
 
-  updateUserInState(user) {
-    this.setState({
-      user
-    });
+  componentDidMount() {
+    // Check if token exists in storage, and is valid
+    const token = this.Auth.getToken();
+    const userLoggedIn = this.Auth.isTokenValid(token);
+    // If it is, then user is still logged in, get their data
+    if (userLoggedIn) {
+      this.updateIsLoggedIn(userLoggedIn);
+      // const profile = this.Auth.getProfile(token);
+      // console.log(profile);
+      this.getUserData(token);
+    }
+  }
+
+  getUserData(token) {
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    /* const { email, id } = profile;
+    const loginData = {
+      email,
+      id
+    }; */
+    const payload = {
+      token: token
+    };
+
+    const options = {
+      method: "POST",
+      headers,
+      body: JSON.stringify(payload)
+    };
+    const postRoute = "/auth/auth";
+
+    const handleResponse = response =>
+      response.json().then(json => {
+        if (response.ok) {
+          return Promise.resolve(json);
+        }
+        return Promise.reject(json);
+      });
+
+    fetch(postRoute, options)
+      .then(handleResponse)
+      .then(res => {
+        const methods = {
+          updateUser: this.updateUserInState,
+          updateIsLoggedIn: this.updateIsLoggedIn
+        };
+        if (res.token) {
+          login(res, methods);
+        }
+      })
+      .catch(error => console.log(error));
   }
 
   updateIsLoggedIn(bool) {
     this.setState({
       isLoggedIn: bool
+    });
+  }
+
+  updateUserInState(user) {
+    this.setState({
+      user
     });
   }
 
