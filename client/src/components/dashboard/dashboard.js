@@ -26,7 +26,6 @@ class Dashboard extends Component {
 
   fetchData(userId, token) {
     const url = `/pets/${userId}`;
-    // console.log(token);
     fetch(url, {
       headers: {
         "content-type": "application/json",
@@ -38,7 +37,6 @@ class Dashboard extends Component {
           this.setState({ redirect: true });
           throw new Error("User not authorised");
         }
-        // console.log(response.json());
         return response.json();
       })
       .then(parsedJSON =>

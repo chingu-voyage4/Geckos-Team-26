@@ -39,8 +39,6 @@ class App extends Component {
     // If it is, then user is still logged in, get their data
     if (userLoggedIn) {
       this.updateIsLoggedIn(userLoggedIn);
-      // const profile = this.Auth.getProfile(token);
-      // console.log(profile);
       this.getUserData(token);
     }
   }
@@ -49,13 +47,8 @@ class App extends Component {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    /* const { email, id } = profile;
-    const loginData = {
-      email,
-      id
-    }; */
     const payload = {
-      token: token
+      token
     };
 
     const options = {

@@ -68,9 +68,7 @@ router.post("/auth", (req, res) => {
       email: email,
       id: id
     };
-    // console.log(userInput);
     GetUserFromDB(userInput).then(user => {
-      // console.log("user: ", user);
       // refresh token
       const token = createToken(user._id, user.email, jwtSecret);
       const userData = createUserData(user);
