@@ -2,7 +2,7 @@ import decode from "jwt-decode";
 
 export default class AuthService {
   getToken() {
-    return sessionStorage.getItem("token");
+    return localStorage.getItem("token");
   }
 
   isTokenExpired(token) {
