@@ -6,7 +6,6 @@ class Logout extends Component {
     this.props.updateUser({});
     this.props.updateIsLoggedIn(false);
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
   }
 
   render() {
