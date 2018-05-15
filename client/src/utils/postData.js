@@ -1,5 +1,4 @@
 function handleResponse(response) {
-  // console.log("postData: ", response);
   return response.json().then(json => {
     if (response.ok) {
       return json;

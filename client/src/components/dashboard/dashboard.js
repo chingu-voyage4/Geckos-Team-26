@@ -15,12 +15,17 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.fetchData(this.props.user.id, this.props.user.token);
+    if (this.props.user.id) {
+      this.fetchData(this.props.user.id, this.props.user.token);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.fetchData(nextProps.user.id, nextProps.user.token);
   }
 
   fetchData(userId, token) {
     const url = `/pets/${userId}`;
-    // console.log(token);
     fetch(url, {
       headers: {
         "content-type": "application/json",
@@ -32,7 +37,6 @@ class Dashboard extends Component {
           this.setState({ redirect: true });
           throw new Error("User not authorised");
         }
-        // console.log(response.json());
         return response.json();
       })
       .then(parsedJSON =>
