@@ -19,7 +19,7 @@ class DeleteButton extends Component {
     const payload = {
       id: this.props.petId
     };
-    
+
     const options = {
       method: "DELETE",
       headers,
@@ -48,7 +48,9 @@ class DeleteButton extends Component {
     }
     return (
       <div>
-        <button onClick={this.toggleConfirm}>Delete</button>
+        <button onClick={this.toggleConfirm}>
+          {this.state.visible ? "Cancel" : "Delete"}
+        </button>
         {this.state.visible ? (
           <button onClick={this.deletePet}>Confirm</button>
         ) : null}
