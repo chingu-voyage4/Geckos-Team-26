@@ -21,7 +21,7 @@
     {
       "name": "Breed",
       "type": "text",
-      "required": true,
+      "required": false,
       "values": ""
     },
     {
@@ -33,7 +33,7 @@
     {
       "name": "Description",
       "type": "text",
-      "required": true,
+      "required": false,
       "values": ""
     },
     {
