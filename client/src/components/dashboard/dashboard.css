@@ -34,3 +34,8 @@
 .add-pet-button {
   margin-top: 1.5em !important;
 }
+
+.dashboard .ui.small.circular {
+  width: 150px;
+  height: 150px;
+}
