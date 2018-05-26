@@ -6,6 +6,7 @@ import mapKeysToPetSchema from "../../utils/mapKeysToPetSchema";
 import mapPetSchemaToKeys from "../../utils/mapPetSchemaToKeys";
 import formatDate from "../../utils/formatDate";
 import postData from "../../utils/postData";
+import avatar from "../../images/pawprint.png";
 
 // import "./petform.css";
 
@@ -68,6 +69,10 @@ class PetForm extends Component {
     headers.append("Content-Type", "application/json");
 
     const payload = mapKeysToPetSchema(this.state.pet);
+    console.log("payload: ", payload);
+    if (payload.petAvatar === "") {
+      payload.petAvatar = avatar;
+    }
     payload.owner = this.props.user.id;
 
     const options = {

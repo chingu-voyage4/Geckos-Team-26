@@ -10,11 +10,13 @@ const PetPreview = props => (
     }}
   >
     <li className="pet-preview">
-      <img
-        className="ui small circular image"
-        src={props.pet.petAvatar}
-        alt="Pet avatar"
-      />
+      <div className="ui small circular">
+        <img
+          className="ui small circular image"
+          src={props.pet.petAvatar}
+          alt="Pet avatar"
+        />
+      </div>
       <p className="ui small header">{props.pet.petName}</p>
     </li>
   </Link>
